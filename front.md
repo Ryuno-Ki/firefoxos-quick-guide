@@ -1,90 +1,101 @@
 {frontmatter}
 
-## Acknowledgments
+## Danksagungen 
 
-To my wife Lili, the best wife in the world!
+An meine Ehefrau Lili, die beste Frau der Welt!
 
-To Mozilla for always believing in us, for keeping the web open and free and for always placing the user first!
+An Mozilla, dafür, dass sie immer an uns glaubten, dass sie das Web offen und frei halten und dafür, dass sie immer den Benutzer an erste Stelle setzen!
 
-To the Brazilian Mozilla Community for receiving me so well and being just awesome!
+An die brasilianische Mozilla-Community dafür, dass sie mich so klasse aufnahmen und einfach nur beeindruckend sind!
 
-To my GSoC mentor Marcos Caceres, the Mozilla WebAPI Team, the Mozilla Tech Evangelists and Dev Engagement teams for being more than awesome!
+An meinen GSoC-Mentor Marcos Caceres, dem Mozilla WebAPI-Team, den Mozilla Tech-Evangelisten und dem Dev Engagement-Teams dafür, dass sie mehr als nur beeindruckend sind!
 
-To Google for the Google Summer of Code 2013! This program is wonderful.
+An Google für den Google Summer of Code 2013 (GSoC)! Dieses Programm ist einfach nur wundervoll.
 
-## This book is in perpetual beta
+## Dieses Buch befindet sich im forlaufenden Beta-Status
 
-My plan is to update this book often, expanding its contents and revising the text as issues are found by readers. Since some APIs are still being implemented by Firefox OS, you will want to make sure you're reading an up-to-date version of this book.
+__FIXME: perpetual übersetzen__
 
-## Me, myself, and I
+Mein Plan ist es, dieses Buch oft zu aktualisieren und seine Inhalte zu erweitern, sowie neue Probleme von den Lesern aufgeworfen werden. Da einige APIs immer noch für Firefox OS implementiert werden, willst du sicher gehen, auch eine aktuelle Version dieses Buches zu lesen.
 
-In this book you will find many parts where I express my personal opinion and make decisions that may be different from what other programmers would do - particularly if it helps explain an idea more easily. I will always try to make it clear and explain my reasoning when I am giving my opinion. Anyway, if there is an error in what I am saying, I will revise the text and update the book. See the Feedback & Pull Requests section for more information. 
+## Über mich
 
-## How this book came to be
+In diesem Buch wirst du viele Abschnitte finden, in denen ich meine eigene Meinung ausdrücke und Entscheidungen treffe, die so vielleicht nicht von anderen Programmierern getroffen werden würde - insbesondere, wenn es hilft, eine Idee einfacher zu erklären. Ich werde immer versuchen, es klar zu machen und meine Gründe zu erläutern, wenn ich meine eigene Meinung kund tue. Wie dem auch sei, falls es einen Fehler bei dem gibt, was ich sage, werde ich den Text überarbeiten und das Buch aktualisieren. Lies im Abschnitt Feedback & Pull Requests für weitere Informationen.
 
-Originally, I'd been writing this book in my spare time - but thanks to the good help of my Google Summer of Code (GSoC) mentor, Marcos Caceres, this book became part of my GSoC project - which aimed to create useful developer resources for Firefox OS. So, huge thanks to Google for funding this work and to Mozilla's Web API team for letting me join them over the summer. 
+## Wie dieses Buch entstand
 
-## Staying up to date
+Ursprünglich hatte ich dieses Buch in meiner freien Zeit geschrieben - aber dank der guten Hilfe von meinem Google Summer of Code (GSoC) Mentoren, Marcos Caceres, wurde dieses Buch Teil meines GSoC-Projekts - welches darauf abzielte, eine nützliche Entwickler-Quelle für Firefox OS zu erstellen. Von daher, riesigen Dank an Google, dass sie diese Arbeit finanziert haben und an das Web API-Team von Mozilla dafür, dass sie mich sie den Sommer über besuchen ließen.
 
-This book is distributed for **free** using [Leanpub](http://leanpub.com). 
+## Auf dem aktuellsten Stand bleiben
 
-You can register your email to receive automatic updates when you download this book from its [book page at Leanpub](http://leanpub.com/quickguidefirefoxosdevelopment). The plan is to update this book many times per month. If you got this book from a friend or from some other site, you should consider going to the page above to download and register there thus making sure you will receive the update notices.
+Dieses Buch wird **kostenlos** über [Leanpub](http://leanpub.com) vertrieben.
 
-## Donations
+Du kannst dich mit deiner E-Mail-Adresse dort registrieren, um automatische Aktualisierungen nach dem Herunterladen dieses Buches von der [Leanpub Buchseite](http://leanpub.com/quickguidefirefoxosdevelopment) zu erhalten. Der Plan ist dabei, dieses Buch mehrere Male im Monat zu aktualisieren. Falls du das Buch von einem Freund oder aus einer anderen Quelle erhalten haben solltest, überlege dir, ob du nicht zu obiger Seite gehen möchtest, um es herunterzuladen und dich dabei zu registrieren. Auf diese Weise kannst du sicher stellen, über Aktualisierungen benachrichtigt zu werden.
 
-Writing a book requires a lot of work and I would like to dedicate more time in my life for this type of activity after the 2013 Google Summer of Code is done. Those that think that this book is useful (or cool) may move the price slider on Leanpub download page from zero to any desired amount and give me some bucks. Those that would rather donate using PayPal, I can receive donations under the *agarzia@mac.com* account. 
+## Spenden
 
-Regardless of donations, you should fill your email on the download form to make sure that once the book is updated you will receive a notice! 
+Ein Buch zu schreiben verlangt eine Menge Arbeit und ich würde gerne mehr Zeit in diese Art von Aktivitäten stecken, wenn der Google Summer of Code 2013 vorbei ist. Jene, die meinen, dass dieses Buch nützlich (oder cool) ist, möchten vielleicht den Preis-Regler auf der Leanpub Download-Seite höher schrauben und mir eine kleine Entschädigung in beliebiger Höhe zukommen lassen. All jene, die lieber über PayPal spenden möchten, können mich über *agarzia@mac.com* erreichen.
 
-## How to contact the author
+Unabhängig von den Spenden solltest du deine E-Mail-Adresse auf der Download-Seite angeben, um über Aktualisierungen benachrichtigt zu werden, wenn das Buch erneuert wird!
 
-To send comments and feedback please send an email to [fxosquickguide@andregarzia.com](mailto:fxosquickguide@andregarzia.com). My website is [http://andregarzia.com](http://andregarzia.com). My Twitter account is [@soapdog](http://twitter.com/soapdog).
+## Wie man den Autor erreichen kann
 
-If you want to help improve the content of this book, please see the Feedback & Pull Requests section.
+Um Kommentare und Feedback einzusenden, schreibe mir eine E-Mail an [fxosquickguide@andregarzia.com](mailto:fxosquickguide@andregarzia.com). Meine Website ist [http://andregarzia.com](http://andregarzia.com). Mein Ttitter-Account ist [@soapdog](http://twitter.com/soapdog).
+
+Wenn du die Inhalte dieses Buches verbessern möchtest, lies bitte den Abschnitt Feedback & Pull Requests.
 
 ## Cover Illustration
 
-The cover page was created by Raphael Eckhardt, a designer and illustrator from Brazil. You can check out his work and contact him (he is a freelancer) at [http://raphaeleckhardt.com/](http://raphaeleckhardt.com/).
+Die Cover-Seite wurde von Raphael Eckhardt erstellt, ein Designer und Illustrator aus Brasilien. Du kannst seine Arbeit unter [http://raphaeleckhardt.com/](http://raphaeleckhardt.com/) einsehen. Dort kannst du auch mit ihm Kontakt aufnehmen (er ist Freischaffender).
+
+## Wer sollte dieses Buch lesen
+
+__FIXME: intermediate übersetzen__
+
+Dieses Buch ist für Leser mit mittleren Kenntnissen in HTML, CSS und JavaScript geschrieben, die mobile Anwendungen für Firefox OS schreiben wollen. HTML, CSS und JavaScript zu lehren, übersteigt den Rahmen dieses Buches. Ich werde dir aber Verweise auf gute Referenz-Bücher geben.
 
 ## Who should read this book
 
 This book is written for readers with an intermediate knowledge of HTML, CSS and JavaScript who wants to build mobile applications for Firefox OS. Teaching HTML, CSS and JavaScript is beyond the scope of this book. I will give you links for good reference books though.
 
-## Best Practices vs Beginner Friendliness 
+## Best Practices vs. Anfänger-Freundlichkeit
 
-Experienced developers will notice that sometimes I don't follow all the good practices in the source code of the examples of this book. Even though I am avoiding anti-patterns in here, I am trying to keep the use of immediate functions and other similar practices to a minimum. The main reason for that is to make the source code beginner friendly as this is an introductory book. Seasoned programmers will know when and how to change things while beginner coders will still be able to understand what is going on. All code here works and as I update this book I may revisit the code and use more and more best practices depending on the readers feedback.
+__ FIXME: Großgeschriebene Wörter __
 
-If you want to dive deeper in the world of high quality JavaScript coding here are some good books:
+Erfahrene Entwickler werden bemerken, dass ich manchmal nicht alle Good Practices im Beispiel-Quellcode folgen werde. Auch wenn ich Anti-Patterns zu vermeiden versuche, bemühe ich mich, IMMERDIATE Funktionen und andere vergleichbare Praktiken auf ein Minimum zu reduzieren. Der Hauptgrund dafür liegt darin, dass dies ein Einführungsbuch ist. SEASONED Programmierer werden merken, wann und wie Dinge umgeändert werden müssen, während Anfänger-Programmierer immer noch in der Lage sein, zu verstehen, was vor sich geht. Sämtlicher Code hier funktioniert und sowie ich das Buch aktualisier, gehe ich noch einmal durch den Code und verwende mehr und mehr Best Practices in Abhängigkeit vom Feedback der Leser.
 
-* [JavaScript: The Good Parts](http://shop.oreilly.com/product/9780596517748.do): The JavaScript Book.
-* [JavaScript Patterns](http://shop.oreilly.com/product/9780596806767.do): Patterns and best practices.
-* [JavaScript Enlightenment](http://shop.oreilly.com/product/0636920027713.do): Advanced JavaScript techniques.
-* [Maintainable JavaScript](http://shop.oreilly.com/product/0636920027713.do): Writing code that is easy to maintain and work with.
+Wenn du noch tiefer in die Welt von hochqualitativem JavaScript-Programmieren eintauchen willst, gibt es hier einige gute Bücher:
+
+* [JavaScript: The Good Parts](http://shop.oreilly.com/product/9780596517748.do): DAS Buch zu JavaScript.
+* [JavaScript Patterns](http://shop.oreilly.com/product/9780596806767.do): Entwurfsmuster und Best Practices.
+* [JavaScript Enlightenment](http://shop.oreilly.com/product/0636920027713.do): Fortgeschrittene JavaScript-Techniken.
+* [Maintainable JavaScript](http://shop.oreilly.com/product/0636920027713.do): Code schreiben, der leicht zu warten und zu verwenden ist.
 
 ## Feedback & Pull Requests
 
-This is a Free and Open book and I am excited to receive all feedback that you people can give me. All the content of the book is at a [GitHub repository](https://github.com/soapdog/firefoxos-quick-guide) and is built using Markdown (with some extensions by Leanpub). To give me feedback, bug fixes and improvements just send me a pull request. Thanks in advance for all contributions.
+Dies ist ein Freies und Offenes Buch und ich freue mich über jedes Feedback, dass Menschen mir geben können. Sämtlicher Inhalt dieses Buches befindet sich im [GitHub Repository](https://github.com/soapdog/firefoxos-quick-guide) und wurde mit Markdown geschrieben (plus einige Erweiterungen von Leanpub). Um mir Feedback, Bug fixes und Verbesserungen zukommen zu lassen, schicke einfach ein Pull Request. Danke schon einmal im Voraus für alle Beiträge.
 
-The Git repository for this book is at [https://github.com/soapdog/firefoxos-quick-guide](https://github.com/soapdog/firefoxos-quick-guide).
+Das Git Repository für dieses Buch befindet sich auf [https://github.com/soapdog/firefoxos-quick-guide](https://github.com/soapdog/firefoxos-quick-guide).
 
-## Translations
+## Übersetzungen
 
-This book was originally written in Portuguese and translated into English by me. Both versions are available for free on the net at:
+Dieses Buch wurde ursprünglich auf Portugiesisch geschrieben und dann von mir in's Englische übersetzt. Beide Versionen sind frei erhältlich im Netz:
 
-* [Portuguese Version](http://leanpub.com/guiarapidofirefoxos): Guia Rapido para Desenvolvimendo para Firefox OS.
-* [English Version](http://leanpub.com/quickguidefirefoxosdevelopment): Quick Guide for Firefox OS App Development.
+* [Portugiesische Version](http://leanpub.com/guiarapidofirefoxos): Guia Rapido para Desenvolvimendo para Firefox OS.
+* [Englische Version](http://leanpub.com/quickguidefirefoxosdevelopment): Quick Guide for Firefox OS App Development.
 
-I welcome all help to translate this book to even more languages (and to fix my broken English).
+Ich begrüße jede Hilfe, dieses Buch in weiteren Sprachen zu übersetzen (und mein gebrochenes Englisch zu überarbeiten).
 
-## Version history
+## Versionsverlauf
 
 ### Version 0.2
-Book was revised by Marcos Caceres of Mozilla's WebAPI team. The content of each chapter was checked for technical correctness, and many grammatical mistakes and typos were fixed throughout. 
+
+Dieses Buch wurde von marcos Caceres aus dem WebAPI-Team von Mozilla überarbeitet. Der Inhalt von jedem Kapitel wurde auf technische Korrektheit überprüft und viele grammatikalische Fehler und Rechtschreibfehler wurden dabei entfernt.
 
 ### Version 0.1
 
-This is the first version of this book. I am yet to run this through an editor and it was not revised for typos, grammar mistakes and general bad things. English is not my first language so please correct me when I am wrong. What you're reading here begun on the 20th of August of 2013 as a quick guide to be distributed at [BrazilJS Conference](http://braziljs.com.br/) that happened on the 22nd and 23rd. So you're basically reading a quick draft written in two days.
+Dies ist die erste Version dieses Buches. Ich bin immer noch dabei, es an einen Lektor zu senden, denn es wurde noch nicht auf Rechtschreibfehler, grammatikalische Fehler usw. geprüft. Englisch ist nicht meine Muttersprache, also korrigier mich bitte, wenn ich irgendwo einen Fehler gemacht habe. Was du hier liest, begann am 20. August 2013 als eine Schnellanleitung auf der [BrazilJS Conference](http://braziljs.com.br/), die am 22. und 23. stattfand. Von daher liest du eher einen schnellen Entwurf von zwei Tagen.
 
-I am using the [Leanpub](http://leanpub.com) system to write this book. This system allows me to iterate quickly and manage this project while keeping me sane. This version is a quasi-literal translation from the original in Portuguese.
+Ich benutze das [Leanpub](http://leanpub.com) System, um das Buch zu schreiben. Dieses erlaubt mir, schnell voranzukommen und das Projekt zu verwalten. Diese Version ist also eine quasi-wörtliche Übersetzung des portugiesischen Originals.
 
 {mainmatter}
