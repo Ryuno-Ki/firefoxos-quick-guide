@@ -1,107 +1,124 @@
-# Basic Concepts {#concepts}
+# Grundkonzepte {#concepts}
 
-Before we get our hands dirty and build our first app, let's learn some basic concepts about developing for Firefox OS. We learned in the [introduction](#introduction) that, just like web pages, apps in Firefox OS are based on HTML5. However, we haven't explained what makes Firefox OS apps different from regular web pages. 
+Bevor wir uns die Hände schmutzig an unserer ersten App schmutzig machen, lass uns einige Grundkonzepte über die Entwicklung für Firefox OS lernen. Wir haben in der [Einführung](#introduction) gelernt, dass Firefox OS Apps genauso wir Websites auf HTML5 basieren. Allerdings haben wir nicht erklärt, worin sich Firefox OS Apps von gewöhnlichen Seiten unterscheidet.
 
-If we use our collective knowledge about other mobile platforms we can see that native application generally will have:
+Falls wir unser Wissen über andere Mobilplattformen zusammentragen, können wir sehen, dass native Anwendungen im Normalfall folgendes auszeichnet:
 
-* A name and an icon that the user can press to launch the app.
-* Access to system services and hardware capabilities. 
+* Einen Namen und ein Icon, dass der Nutzer drücken kann, um die Anwendung zu starten.
+* Zugriff zu Systemdiensten und Hardware-Funktionen.
 
-Looking at the big picture, a Firefox OS app is just a web page that has an icon, a name and is usually able to work offline (depending on how the app is implemented). All the data about an application such as name, icon and more is defined in a *application manifest file* that is the focus of our next section.
+Wenn wir auf das große Ganze blicken, ist eine Firefox OS-App nur eine Webseite mit einem Icon, einem Namen und ist üblicherweise dazu in der Lage, offline zu arbeiten (je nachdem, wie die App geschrieben wurde). All diese Daten wie Name, Icon und mehr ist in einer *Anwendungs-Manifest-Datei* definiert, die den Schwerpunkt des nächsten Abschnitts einnehmen wird.
 
-## The Application Manifest
+## Das Anwendungs-Manifest
 
-The [manifest](https://developer.mozilla.org/docs/Apps/Manifest) is a [JSON](http://json.org) file that describes aspects of an hosted web app. Usually this file is called **manifest.webapp** and lives next to your main HTML file that is usually called **index.html**.
+Das [Manifest](https://developer.mozilla.org/docs/Apps/Manifest) ist eine [JSON](http://json.org)-Datei, die Aspekte einer Hosted App beschreibt. Gewöhnlich wird diese Datei **manifest.webapp** genannt und befindet sicch neben deiner Haupt-HTML-Datei mit dem üblichen Namen **index.html**.
 
-<<[Sample Manifest](code/sample_manifest.webapp)
+<<[Beispiel-Manifest](code/sample_manifest.webapp)
 
-Above we can see the manifest for an application called memos[^memos]. Among other things it describes who created the application, which icons are used, what is the name of the app, what file is used to launch the app (in this case it is *index.html*), what hardware access permissions your app requires, etc. This file is used by Firefox OS to add the application to the device's home screen and by the Firefox Marketplace to display the application on the catalog as we can see in the image below.
+Oben sehen wir ein Manifest für eine Anwendung namens Memos[^memos]. Neben anderen Dingen beschreibt es, wer die Anwendung erstellt hat, welche Icons benutzt werden, wie der Name der App lautet, welche Datei zum Starten der App benutzt wird (hier *index.html*), welche Hardware-Berechtigungen die App verlangt usw. Diese Datei wird von Firefox OS dazu benutzt, die Anwendung zum Startbildschirm  des Geräts hinzuzufügen und von Firefox Marketplace, um die Anwendung im Katalog darzustellen, wie wir im unteren Bild sehen können.
 
-[^memos]: This is a sample app for Firefox OS as [seen on the Firefox Marketplace](https://marketplace.firefox.com/app/memos) for which the [source code is on GitHub](https://github.com/soapdog/memos-for-firefoxos).
+[^memos]: Dies ist eine Beispiel-App für Firefox OS, wie man [auf dem Firefox Marketplace sehen kann](https://marketplace.firefox.com/app/memos). Der [Quellcode liegt auf GitHub](https://github.com/soapdog/memos-for-firefoxos).
 
-![Memos app shown at the Firefox Marketplace](images/originals/memos-marketplace.png)
+![Memos App im Firefox Marketplace](images/originals/memos-marketplace.png)
 
-Note how the information from the manifest is used by the system to add the app to the homescreen, as we can see on the following screenshot.
+Sieh du, wie die Informationen aus dem Manifest vom System benutzt werden, um die Anwendung dem Startbildschirm hinzuzufügen, wie das Bildschirmfoto unten zeigt.
 
-![Memos on the simulator](images/originals/memos-simulator.png)
+![Memos im Simulator](images/originals/memos-simulator.png)
 
-By gathering your HTML, CSS, JavaScript, and a manifest file you already have an application ready to run on Firefox OS. Moving on our topic about basic concepts let's learn more about what application types there are.
+Indem du deine HTML-, CSS-, JavaScript und eine Manifest-Datei zusammenträgst, hast du bereits eine Anwendung, die auf Firefox OS laufen kann. Lass uns jetzt mehr über die vorhandenen Anwendungstypen lernen, während wir mit den Grundkonzepten in diesem Thema fortschreiten.
 
+## Anwendungstypen
+
+Firefox OS hat derzeit zwei Typen von Anwendungen: Hosted Apps und Packaged Apps - auch wenn weitere Typen in Zukunft hinzukommen mögen (wie angepasste Tastaturen und die Fähigkeit, andere Systemdienste zu erstellen).
+
+* **Hosted Apps:** Werden auf einem Webserver wie normale Websites gehosted. Das bedeutet, wenn der Nutzer eine Hosted App startet, wird ihr Inhalt von einem entfernten Server (oder aus dem Cache, sofern verfügbar) geladen.
+* **Packaged Apps:** Werden als Zip-Datei verteilt und auf das Gerät bei der Installation kopiert. Sobald ein Nutzer eine Packaged App startet, wird ihr Inhalt aus der Zip-Datei geladen statt von einem entfernten Server.
 ## Types of Application
 
-Firefox OS currently has two types of applications: hosted apps and packaged apps - though more types may become available in the future (e.g. custom keyboards and the ability to create other system services).
+__ FIXME: Deutscher AppCache Link, despise übersetzen __
 
-* **Hosted Apps:** Are hosted on a web server just like normal websites. This means that when the user launches a hosted app, its content is loaded from the remote server (or from the cache, if available).
-* **Packaged Apps:** Are distributed as a zip file and copied to the device when installed. When the user launches a packaged app, its contents are loaded from the zip file instead of a remote server. 
+Beide Typen haben ihre Vor- und Nachteile. Auf der einen Seite sind Hosted Apps leichter zu warten, denn du musst nur Dateien auf deinem Webserver warten. Andererseits wird es schwieriger, sie offline arbeitsfähig zu machen, denn das benötigt den Einsatz des berüchtigten AppCaches. Hosted Apps sind also beschränkt, was die WebAPIs angeht und können deswegen nicht alles, was eine Packaged App tun kann.
 
-There are pros and cons to both types. On the one hand, hosted apps are easier to maintain, as all you need to do is maintain files on your web server. However, it's harder to make them work offline because it requires the use of the much despised [**appcache**](https://developer.mozilla.org/pt-BR/docs/HTML/Using_the_application_cache). Hosted apps are also limited in which WebAPIs they can use, which means they can't do all the things a packaged app can do.   
+Andererseits haben Packaged Apps all ihren Inhalt im Speicher des Geräts - was bedeutet, dass sie immer erreichbar sind, auch wenn der Benutzer offline ist (und damit AppCache nicht benötigen). Sie können außerdem Zugriff auf sicherheitsrelevante WebAPIs bekommen, die Hosted Apps verwehrt bleiben. Eine Packaged App zu aktualisieren kann andererseits schmerzvoll werden, denn du musst eine neue Version im Firefox Marketplace einreichen - und damit noch einmal durch den Review-Prozess, was einige Zeit in Anspruch nehmen kann.
 
-On the other hand, packaged apps have all their content stored on the device - which means they are always available when the user is offline (and so avoid needing appcache). They also have the ability to access security-sensitive WebAPIs that are not available to hosted apps. Updating them can be a bit painful, because you need to upload any new version to the Firefox Marketplace - which means going through a review process, which can take some time.   
+Wenn du dich für einen Typ von Anwendungen entscheiden willst, beachte: Wenn du erweiterte WebAPIs benötigst, solltest du eine Packaged App benutzen. Wenn deine Anwendung allerdings auch ohne Zugriff auf erweiterte Systemdienste oder Gerätfähigkeiten neben den in einem Webbrowser üblichen auskommt, wähle immer eine Hosted App. Es ist in Ordnung, wenn du eine Packaged App benutzt, weil du keinen Platz zum Hosten hast.
 
-When trying to choose which type of application to build, consider: if you require advanced WebAPIs, then you should use a packaged app. However, if your application works fine without needing to access any advanced system services or device capabilities beyond those already available in a web browser, then always choose a hosted app. It is ok to use packaged apps if you don't have a place to host it.
+Oben erwähnte ich AppCache, welches problematisch werden kann (und trotzdem für Hosted Apps benötigt wird). Mach dir nicht zu viel Gedanken, denn es gibt Werkzeuge, die das Erstellen und Verteilen von AppCache erleichtern [^js-tools].
 
-Above I mentioned that appcache can be problematic (which is sometimes required for hosted apps). Don't worry too much as there are tools available to make appcache generation and deployment easier [^js-tools].
+__ FIXME: developer hub übersetzen __
 
-In this book we're going to build packaged apps, as it will allow us to explore what is possible with the WebAPIs. However, most of what we will learn about manifests applies to hosted apps. If you want to know more about distributing hosted apps, check [the hosted applications link at the developer hub](https://marketplace.firefox.com/developers/docs/hosted).
+In diesem Buch werden wir zusammen eine Packaged App erstellen und dabei erkunden, was man mit WebAPIs alles anstellen kann. Das meiste, was wir über Manifest-Dateien lernen werden, trifft jedenfalls auf Hosted Apps zu. Wenn du mehr zum Vertreiben von Hosted Apps lernen willst, lies [den Hosted App-Link auf dem Entwickler Hub](https://marketplace.firefox.com/developers/docs/hosted).
 
-[^js-tools]: There are many useful tools out there, check out [Grunt](gruntjs.com), [Volo](http://volojs.org/), [Yeoman](http://yeoman.io/), [Bower](http://bower.io/). There is a lot of overlap among these tools, its a matter of preference which one you use. (I like Volo more than Grunt mostly because Volofiles are easier for me to read).
+[^js-tools]: Es gibt jede Menge nützlicher Werkzeuge, sieh dir [Grunt](gruntjs.com), [Volo](http://volojs.org/), [Yeoman](http://yeoman.io/) und [Bower](http://bower.io/) an. Es gibt eine Menge Gemeinsamkeiten zwischen diesen Werkzeugen, so dass es eher eine Sache der persönlichen Vorliebe ist, welche du benutzt. (Ich mag Volo mehr als Grunt, in erster Linie, weil Volo-Dateien leichter für mich zu lesen sind).
 
-Now that we've covered the two types of applications that Firefox OS supports, let's look at the different levels of system access they can have.
+Nachdem wir jetzt die beiden von Firefox OS unterstützten Anwendungstypen kennengelernt haben, lass uns einen Blick auf die verschiedenen Stufen des Systemzugriffs werfen.
 
-## Security Access Levels
+## Sicherheitszugriffs-Levels
 
-There are three security levels on Firefox OS - with each level having more access to APIs than the previous level.
+Es gibt drei Sicherheitslevel für Firefox OS - wobei jeder Level mehr Zugriff auf APIs gewährt bekommt als der vorige.
 
-* **Plain (a.k.a. web):** This is the default level for all applications. This level applies to hosted apps and packaged apps that do not declare a `type` property in their manifest file. These apps have access to the common set of APIs found in browsers - but don't have access to any of Mozilla's WebAPIs.
-* **Privileged:** This type of app has access to all common APIs found in the Firefox browser, plus some additional ones, such as contacts, and system alarms. Only **packaged apps can be privileged apps** and the package must be digitally signed by the Firefox OS Marketplace.
-* **Certified:** For security reasons, this level is only available to Mozilla and its partners (e.g. phone manufacturers, telecoms, etc.). Certified apps are able to access all the APIs, such as telephony and more. An example of certified app is the Firefox OS dialer application. 
+__ FIXME: Dialer auf deutsch übersetzen __
 
-During development, it is possible for us to access privileged APIs without needing any special permission from Mozilla. But when we want to distribute a privileged app, it first needs to go to the Firefox Marketplace. There, the code is checked as part of a rigorous approval process, and if it's found to be OK, it will be digitally signed - which tells users of Firefox OS that this application is allowed to access sensitive APIs.
+* **Einfach (auch bekannt als: Web):** Dies ist der Standard-Level für alle Anwendungen. Es trifft auf Hosted Apps und Packaged Apps zu, die nicht eine `type`-Eigenschaft in ihrer Manifest-Datei haben. Diese Apps haben Zugriff auf die übliche Menge an APIs von Browsern - aber sie haben keinen Zugriff auf Mozillas WebAPIs.
+* **Privilegiert:** Dieser Typ Apps hat Zugriff auf alle üblichen APIs vom Firefox Browser, sowie einigen weiteren wie Kontakte und Systemalarm. Nur **Packaged Apps können priveligierte Apps** werden und das Paket muss digital im Firefox OS Marketplace signiert worden sein.
+* **Zertifiziert:** Aus Sicherheitsgründen ist dieses Level nur für Mozilla und seine Partner (z.B. Smartphone-Hersteller, Telekommunikations-Unternehmen usw.) verfügbar. Zertifizierte Apps haben Zugriff auf alle APIs wie Telefonie und mehr. Ein Beispiel einer zertifizierten App ist die Firefox OS Anruf-Anwendung.
 
-On [the page about the WebAPIs on the Mozilla Developer Network](https://developer.mozilla.org/en-US/docs/WebAPI) we can see what APIs are implemented on what platforms and what access level is needed to use each API.
+Während der Entwicklung ist es für uns möglich, auf privilegierte APIs ohne besondere Zustimmung von Mozilla zuzugreifen. Aber sobald wir eine privilegierte App vertreiben wollen, müssen wir sie zunächst im Firefox Marketplace einreichen. Dort wird der Code als Teil eines strengen Zulassungssprozesses überprüft und wenn es für gut befunden wird, wird es digital signiert - was dem Benutzer mitteilt, dass diese App berechtigt ist, auf sensible APIs zuzugreifen.
 
-![Access levels for the APIs](images/originals/webapi-access.png)
+__ FIXME: deutsche Seite __
 
-As we can see on the image above, any application can access the *IndexedDB API and FileHandle API* but only privileged apps can access the *Contacts API and Device Storage API*.
+Auf [der Seite über WebAPIs in Mozillas Entwickler-Netzwerk](https://developer.mozilla.org/en-US/docs/WebAPI) können wir sehen, welche APIs auf welcher Plattform implementiert wurden und welcher Zugriffslevel für welche API benötigt wird.
 
-## Mozilla's WebAPIs
+![Zugriffslevel für die APIs](images/originals/webapi-access.png)
 
-Firefox OS provides us with the APIs that enable us to build applications that are just as capable as native apps on other platforms. Access to hardware and services is done through the WebAPIs. To learn more about the list of available APIs for the current Firefox OS version check out [the WebAPI page on the Mozilla Wiki](https://wiki.mozilla.org/WebAPI).
+Wie wir im obigen Bild sehen können, kann jede Anwendung auf die *IndexedDB und FileHandle API* zugreifen, aber nur privilegierte App kann auf die *Contacts API und Device Storage API* zugreifen.
 
-Lets review some code examples to see how easy those APIs are to use. Don't take this example as a full documentation of the WebAPIs, they are just a small sample to make you understand how we can access device features using JavaScript.
+## Mozillas WebAPIs
 
-### Example #1: Making calls
+Firefox OS stellt uns APIs zur Verfügung, die es erlauben, Anwendungen zu entwickeln, die genauso mächtig sind, wie native Apps auf anderen Plattformen. Zugriff auf die Hardware und Dienste ist über die WebAPIs möglich. Um mehr über die Liste der verfübaren APIs zur aktuellen Firefox OS Version zu erfahren, schau dir [die WebAPI-Seite im Mozilla Wiki](https://wiki.mozilla.org/WebAPI) an.
 
-Imagine that you have an application that needs to open the dialer with a phone number already filled in. You can just use the following code:
+Lass uns einige Code-Beispiele näher betrachten, um zu sehen, wie einfach diese APIs zu benutzen sind. Betrachte dieses Beispiel nicht als eine vollständige Dokumentation jener WebAPIs, den sie sind nur einige Vorschläge, um dir zu zeigen, wie Geräte-Funktionen mit JavaScript angesprochen werden können.
 
-<<[Sending a phone number to the dialer](code/webapi_samples/dial.js)
+### Beispiel #1: Aufrufe tätigen
 
-This code makes a request to the dialer app to call a particular number. Note that this doesn't actually place a call - the user will still need to tap the dial button to place the call. Requiring explicit user action before executing some other action is pretty common: it's a good security pattern because it requires user interaction through consent before allowing something to happen. Other APIs that can place calls without user interaction are available for more elevated access levels. Certified apps can place calls without interaction for example. The API used in the code above, called "Web Activities", is available to all apps though.
+__ FIXME: Dialer auf deutsch übersetzen __
 
-Check out the the Mozilla Blog for [more information about Web Activites](https://hacks.mozilla.org/2013/01/introducing-web-activities/). 
+Stell dir vor, deine Anwendung muss die Rufnummer mit einer vorgewählten öffnen. Du kannst einfach den folgenden Code benutzen:
 
-### Example #2: Saving a contact
+__ FIXME: Dialer auf deutsch übersetzen __
 
-Imagine that you have a company intranet and you want to provide a way to transfer a contact from the online intranet address book to the phone address book. You can do that with the Contacts API.
+<<[Eine Nummer an die Rufwahl-Anwendung senden](code/webapi_samples/dial.js)
 
-<<[Saving a contact](code/webapi_samples/contact.js)
+Dieser Code stellt eine Anforderung an die Rufnummer-App, um eine bestimmte Nummer anzurufen. Beachte, dass dies nicht zur tatsächlichen Wahl der Nummer führen - der Benutzer muss immer noch auf Abheben drücken, um die Nummer zu wählen. Eine explizite Nutzer-Aktion zu fordern, bevor irgendwelcher Code ausgeführt wird, ist ziemlich üblich: es ist ein gutes Sicherheitsmuster, denn es verlangt eine Interaktion über das Einverständnis, bevor irgendetwas zu passieren erlaubt wird. Andere APIs zur Rufnummernwahl ohne Interaktion sind für höhere Zugriffslevel verfügbar. Zertifizierte Apps können beispielsweise Rufnummern ohne irgendeine Interaktion wählen. Die im obigen Code benutzte API wird "Web Activities" genannt und ist für alle Apps verfügbar.
 
-This API creates an object with the contact data and saves it into the phone address book without requiring user interaction. Because access to contacts carries potential privacy implications, this API is only available for *privileged apps*. This pattern where you create an object with a success and an error callback is used in many of the WebAPIs.
+Lies im Mozilla Blog für [weitere Informationen zu Web Activites](https://hacks.mozilla.org/2013/01/introducing-web-activities/).
 
-To learn more about this API, read [the page about the *Contacts API* on the Mozilla Wiki](https://wiki.mozilla.org/WebAPI/ContactsAPI).
+### Beispiel #2: Einen Kontakt speichern
 
-### Example #3: Picking an image from the camera
+Stell dir vor, du hast ein Unternehmens-Intranet und möchtest eine Möglichkeit anbieten, einen Kontakt vom Intranet-Adressbuch in das Adressbuch auf dem Smartphone zu übertragen. Das kannst du mit der Contacts API erledigen.
 
-Imagine you are building an application that applies fancy filters to pictures. You want to place a button in your app that allows the user to pick a photo from a photo album or from the camera.
+<<[Einen Kontakt speichern](code/webapi_samples/contact.js)
 
-<<[Picking an image](code/webapi_samples/pick.js)
+Diese API erstellt ein Objekt mit dem Kontakt_Daten und speichert es im Adressbuch des Smartphones ohne eine Benutzerinteraktion zu erfordern. Weil der Zugriff auf Kontakte potentielle Datenschutzverletzungen beinhaltet, ist diese API nur für *privilegierte Apps* zugänglich. Dieses Muster, bei dem du ein Object erstellst und einen Erfolgs- und einen Fehler-Callback einrichtest, wird in vielen WebAPIs eingesetzt.
 
-Here we see another example of a [WebActivity](https://hacks.mozilla.org/2013/01/introducing-web-activities/). These activities are available to all applications. In this specific sample we're using the *pick* activity and passing in the *MIME Types* of the files that we wish to retrieve. When this code is executed, the system shows a screen to the user asking where he or she wants to retrieve the image from (camera, gallery, wallpapers). If the user selects an image, the success callback is triggered. If the user cancels the operation, the error callback is executed. On the image below, we can see the dialog that lets the user pick a photo from the device:
+Um mehr über diese API zu erfahren, lies [die Seite über *Contacts API* im Mozilla Wiki](https://wiki.mozilla.org/WebAPI/ContactsAPI).
 
-![Example of the *pick activity*](images/originals/pick_image.png)
+### Beispiel #3: Ein Bild von der Kamera wählen
 
-## Summary
+__ FIXME: fancy auf deutsch übersetzen __
 
-In this chapter we saw that, unlike regular web pages, both Firefox OS' hosted apps and packaged apps rely on a manifest file. We also saw that, from a security perspective, packaged apps can be "privileged" or "certified". Only privileged and certified apps can access Mozilla's powerful set of WebAPIs. the WebAPIs are not available to hosted apps or to regular web pages. 
+Stell dir vor, du entwickelst eine Anwendung, die FANCY Filter auf Bilder anwendet. Du möchtest einen Knopf in deiner App platzieren, die es dem Benutzer erlaubt, ein Bild aus dem Foto-Album oder von der Kamera auszuwählen.
 
-Now it's about time we get our hands dirty and create an app!
+<<[Ein Bild auswählen](code/webapi_samples/pick.js)
+
+__ FIXME: Überlegen, ob success und error callbacks übersetzt werden sollen __
+
+Hier haben wir ein anderes Beispiel einer [WebActivity](https://hacks.mozilla.org/2013/01/introducing-web-activities/). Diese Aktivitäten sind für alle Anwendungen verfügbar. In diesem speziellen Fall benutzen wir die *pick* activity und übergeben ihr *MIME-Typen* von Dateien, die wir erhalten wollen. Wenn dieser Code ausgeführt wird, zeigt das System dem Nutzer einen Bildschirm, um ihn oder sie zu fragen, ein Bild von der (Kamera, Gallerie, Hintergrundbilder) auszuwählen. Wenn der Benutzer ein Bild auswählt, wird der Erfolgs-Callback getriggert. Wenn der Benutzer den Vorgang abbricht, wird der Fehler-Callback ausgeführt. In unterem Bild können wir den Dialog sehen, der den Nutzer ein Bild auswählen lässt:
+
+![Beispiel einer *pick activity*](images/originals/pick_image.png)
+
+## Zusammenfassung
+
+In diesem Kapitel sahen wir, dass anders als normale Websites bei Firefox OS sowohl Hosted Apps und Packaged Apps auf Manifest-Dateien beruhen. Wir sahen ebenfalls, dass von einem Sicherheitsstandpunkt Packaged Apps entweder "privilegiert" oder "zertifiziert" sein können. Nur privilegierte und zertifizierte Apps bekommen Zugriff auf Mozillas mächtige WebAPIs. Die WebAPIs sind nicht für Hosted Apps oder normale Websites verfügbar.
+
+Jetzt wird's aber Zeit, unsere Hände an einer ersten App schmutzig zu machen!
