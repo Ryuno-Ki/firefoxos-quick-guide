@@ -1,10 +1,12 @@
 {backmatter}
 
-# Appendix 1: Useful links
+# Anhang 1: Nützliche Links
 
 * [Mozilla](http://mozilla.org)
-* [Mozilla Brasil Community Page](http://mozillabrasi.org.br)
+* [Mozilla Brasilianische Community-Seite](http://mozillabrasi.org.br)
 * [Firefox OS Developer Hub](http://marketplace.firefox.com/developers)
-* [Mozilla Developers Network](http://developer.mozilla.org/): Best documentation ever!
+* [Mozilla Enwickler-Netzwerk](http://developer.mozilla.org/): Die beste Dokumentation überhaupt!
 * [Firefox OS](http://www.mozilla.org/pt-BR/firefox/os/)
-* [WebAPI on Mozilla Wiki](http://wiki.mozilla.org/WebAPI) 
+* [WebAPI im Mozilla Wiki](http://wiki.mozilla.org/WebAPI) 
+
+__ FIXME: Deutsche Firefox OS-Seite? __
