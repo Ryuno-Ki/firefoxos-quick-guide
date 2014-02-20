@@ -1,48 +1,62 @@
-# Developer Tools {#developertools}
+# Entwickler-Werkzeuge {#developertools}
 
-Firefox has many tools to help web developers do their job. Many people are still using [FireBug](https://addons.mozilla.org/pt-BR/firefox/addon/firebug/) and haven't realize that Firefox now has its own built-in tools. In this chapter we're going to review the tools that are most useful for developing apps for Firefox OS.
+__ FIXME: deutscher Link? __
 
-If you're interested in learning more about these tools, and what other dev tools goodness is about to land in Firefox, check out the [developer tools](https://developer.mozilla.org/en-US/docs/Tools) page on Mozilla's Developer Network (really, go check that link! I will wait).
+Firefox bringt eine Menge Werkzeuge mit, die Web-Entwickler in ihrer Arbeit unterstützen. Viele Menschen nutzen immer noch [FireBug](https://addons.mozilla.org/pt-BR/firefox/addon/firebug/) und haben immer noch nicht realisiert, dass Firefox mit eingebauten Werkzeugen daherkommt. In diesem Kapitel werden wir diejenigen begutachten, die am nützlichsten zum Entwickeln von Firefox OS-Apps sind.
+
+__ FIXME: Deutscher Link? __
+
+Wenn du mehr über diese und andere Werkzeuge lernen möchtest, die in Firefox ankommen sollen, lies die [Entwickler-Werkzeuge](https://developer.mozilla.org/en-US/docs/Tools)-Seite im Mozilla Developer Network (du solltest es wirklich lesen! Ich werde warten).
  
-## Introducing the Responsive Design View
+## Bildschrimgröße testen
 
-A common workflow in Web development is changing a HTML file and then reloading the page in the browser to see what's changed. Unless you are using something like Grunt or Volo, generally there won't be the need for a compilation step or similar. Even though the Firefox OS Simulator permits you to use that same workflow, the emulator is currently restricted to one resolution (480x320). This is less than ideal if you are also designing your application to work on tablets, phablets, giant TVs, or anything in between.  
+__ FIXME: permits auf deutsch übersetzen __
 
-To check how your app will look on any screen resolution, you can use Firefox's **Responsive Design View** tool to change the screen (and viewport). It can be enabled by going to the **Tools menu -> Web Developer -> Responsive Design View** as shown in the image below. When you activate this tool, the window will change so that you can alter the viewport size using the drag corners or the selection box.
+Ein üblicher Workflow in der Web-Entwicklung ist das Ändern einer HTML-Datei und dann das Neuladen dieser im Browser, um zu sehen, was sich geändert hat. Wenn du nicht gerade Grunt oder Volo benutzt, wird es keinen Bedarf für einen Kompilierungs-Schritt oder dergleichen geben. Selbst der Firefox OS Simulator erlaubt dir den selben Workflow, auch wenn der Emulator derzeit auf eine Auflösung (480x320) beschränkt ist. Dies ist weniger ideal, wenn du deine App auch zum Arbeiten auf Tablets, Phablets und riesige TV-Bildschirme oder irgendwas dazwischen entwirfst.
 
-![Activating Responsive Design View](images/originals/responsive-design-view.png)
+Um zu überprüfen, wie deine App auf einer beliebigen Auflösung aussiehst, kannst du die **Bildschrimgröße testen** von Firefox benutzen, um den Bildschirm (und Viewport) zu ändern. Es kann im **Werkzeug-Menü -> Web-Entwickler -> Bildschirmgröße testen** eingeschaltet werden, wie man im Bild unten sehen kann. Sowie du dieses Werkzeug aktivierst, wird sich das Fenster verändern, so dass du die Viewport-Größe aus der Auswahlliste wählen oder mit den Anfassern anpassen.
 
-Using the responsive design view is specially useful for testing out [**media queries**](https://developer.mozilla.org/en-US/docs/Web/Guide/CSS/Media_queries), as it allows you to resize the screen and see how your site responds to changes in layout in real time. Another great feature of the Responsive Design View is that you can save predefined sizes. If you know what viewport sizes you are targetting, then your can quickly check different viewport sizes without needing to resize the actual browser window. 
+![Bildschirmgröße testen](images/originals/responsive-design-view.png)
 
-![Responsive Design View Sample](images/originals/responsive-view-sample.png)
+__FIXME: Link auf Deutsch?__
 
-At the time of writing, most of the Firefox OS phones that are on the market are running on a 480x320 resolution - and at a pixel density of about 96 pixels-per-inch. However, you should expect this to change as new Firefox OS hardware becomes available as time goes on: screens will likely pack more pixels and have higher pixel densities (just like Apple's retina displays). 
+Die Bildschirmgröße zu testen wird gerade dann nützlich, wenn [**media queries**](https://developer.mozilla.org/en-US/docs/Web/Guide/CSS/Media_queries) getestet werden sollen, da sie ein Ändern der Bildschirmgröße erlaubt und das Ändern des Layouts in Echtzeit betrachtet werden kann. Eine weitere tolle Funktion beim Testen der Bildschirmgröße liegt darin, vordefinierte Größe zu speichern. Wenn du die Größe des Viewports vom Zielgerät kennst, kannst du verschiedene Viewport-Größen schnell überprüfen, ohne das Browserfenster an sich ändern zu müssen.
 
-To future proof your app, don't hard-code your CSS to any resolution or pixel density. Instead, you should use media queries and the responsive design methodology to create apps that adapt to any screen size. To learn more about responsive design, I recommend the following books [Responsive Web Design](http://www.abookapart.com/products/responsive-web-design) and [Mobile First](http://www.abookapart.com/products/mobile-first).
+![Beispiel des Testens der Bildschirmgröße](images/originals/responsive-view-sample.png)
 
-In summary, the responsive design view allows us to test our web applications using many different screen sizes without the need to resize the Firefox browser window itself. In my humble opinion this is one of the most useful web developer tools available - but it has one big limitation: it does not currently allow you to test different pixel densities (i.e. to see what your site would look like on a "retina" display or better).
+Zum Zeipunkt des Schreibens liefen die meisten Firefox OS-Geräte auf dem Markt mit einer Auflösung von 480x320 - bei einer Pixelrate von ungefähr 96ppi. Du solltest jedenfalls erwarten, dass neuere Firefox OS-Hardware mit der Zeit sich ändern werden: Bildschirme werden voraussichtlich mehr Pixel reinpacken und eine höhere Pixeldichte aufweisen (wie Apples Retina-Displays).
 
-## Developer tools
+Um deine App für die Zukunft zu rüsten, stütze dich im CSS nicht auf irgendeine Auflösung oder Pixel-Dichte. Nutze stattdessen Media Queries und die Responsive Design-Methode, um Apps zu entwickeln, die sich an eine beliebige Bildschirmgröße anpassen. Wenn du mehr darüber lernen möchtest, empfehle ich dir die Bücher [Responsive Web Design](http://www.abookapart.com/products/responsive-web-design) und [Mobile First](http://www.abookapart.com/products/mobile-first).
 
-Firefox's developer tools are similar to FireBug and the tools available in other modern browsers. Using these tools you can execute and debug your JavaScript using [the console](https://developer.mozilla.org/en-US/docs/Web/API/console), and manipulate both the DOM and the CSS on the current page.  
+Zusammengefasst erlaubt uns das Testen der Bildschirmgröße unsere Webanwendung für viele verschiedene Bildschirmgrößen zu testen, ohne das Firefox-Fenster selbst ändern zu müssen. Meiner bescheidenen Meinung nach ist dies eine der nützlichsten Web-Developer-Werkzeuge da draußen - aber es hat eine große Einschränkung: Derzeit erlaubt es dir nicht, verschiedene Pixel-Dichten zu testen (um beispielsweise herauszufinden, wie gut deine Seite auf einem Retina-Display aussähe).
 
-To bring up the console, you can either:
+## Entwickler-Werkzeuge
 
-	* Go to "Tools menu > Web Developer > Web Console". 
-  * right-click on the page you want to debug, and select "Inspect Element", then click on "Console" tab. 
+__FIXME: Link auf deutsch?__
+
+Die Entwickler-Werkzeuge von Firefox sind vergleichbar mit FireBug und denen von anderen modernen Browsern. Mit diesen kannst du dein JavaScript mit [der Konsole](https://developer.mozilla.org/en-US/docs/Web/API/console) ausführen und debuggen, sowie sowohl den DOM als auch das CSS auf der aktuellen Seite manipulieren.
+
+Um die Konsole zu starten, hast du zwei Möglichkeiten:
+
+	* Über "Werkzeuge > Web Developer > Web Console"
+  * auf der zu debuggenden Seite rechtsklicken und "Dieses Element untersuchen" auswählen, danach auf den Reiter "Konsole" klicken.
 
 ![JavaScript Console](images/originals/console-open.png) 
 
-Besides the *JavaScript Console* there are many other tools available such as [*the style editor*](https://developer.mozilla.org/en-US/docs/Tools/Style_Editor), [*the network monitor*](https://developer.mozilla.org/en-US/docs/Tools/Network_Monitor), [*the JavaScript profiler*](https://developer.mozilla.org/en-US/docs/Tools/Profiler), [*the JavaScript debugger*](https://developer.mozilla.org/en-US/docs/Tools/Debugger), [*the page inspector*](https://developer.mozilla.org/en-US/docs/Tools/Page_Inspector) and many others.
+__ FIXME: Link auf Deutsch __
 
-In the application we've built in the previous chapter, we used the console to check the progress of our application. This is a pretty powerful way to debug our apps - but some developers are still  using `alert()` all over their JavaScript code as their "debug tool". 
+Neben der *JavaScript-Konsole* gibt es noch viele weitere Werkzeuge wie [*den Stil-Editor*](https://developer.mozilla.org/en-US/docs/Tools/Style_Editor), [*den Netzwerk-Monitor*](https://developer.mozilla.org/en-US/docs/Tools/Network_Monitor), [*den JavaScript-Profiler*](https://developer.mozilla.org/en-US/docs/Tools/Profiler), [*den JavaScript-Debugger*](https://developer.mozilla.org/en-US/docs/Tools/Debugger), [*den Seiten-Inspektor*](https://developer.mozilla.org/en-US/docs/Tools/Page_Inspector) und viele weitere.
 
-Using `alert()` is really bad because if one forgets to remove any `alert()`s, it's the user's who will ultimately pay the price. Using the console avoids this problem as it harmlessly (and silently!) routes all messages to a place that user's don't normally access - so it doesn't disrupt the user experience. Using the console also means you don't need to remove your console messages from your code, unless you really want to. This can help with code maintenance and debugging if things do go wrong (as they generally do with any software!).   
+In der Anwendung aus dem vorigen Kapitel haben wir die Konsole benutzt, um den Fortschritt des Programms zu überprüfen. Dies ist eine ziemlich mächtige Methode, um unsere Apps zu debuggen - aber einige Entwickler benutzen immer noch `alert()` für all ihren JavaScript-Code als "Debug-Werkzeug".
 
-Learning how to properly use the developer tools bundled with Firefox (or whatever browser you're using) is an important step in becoming a better developer. That's why I advise everyone to check the links above and get more familiar with the various tools available in Firefox. 
+Das Benutzen von `alert()` ist eine ziemlich schlechte Idee, denn wenn du auch nur eines von ihnen vergisst, wird der Benutzer schlussendlich den Preis dafür bezahlen müssen. Mit der Konsole umgehst du dieses Problem, denn es lenkt alle Ausgeben schadlos (und stumm!) an einen Ort, den ein Benutzer normalerweise nicht sieht - und verdirbt damit nicht das Benutzererlebnis. Es hat darüber hinaus den Vorteil, dass du nicht unbedingt deine Konsolen-Nachrichten entfernen musst, es sei denn, du willst es. Das kann das Warten und Debuggen von Code bei Bedarf (und der tritt im Allgemeinen bei jeder Software auf!) deutlich erleichtern.
 
-One special tool that was not mentioned above is the [*remote debugger*](https://developer.mozilla.org/en-US/docs/Tools/Remote_Debugging). That tool allows us to connect to a phone running Android or Firefox OS, and use the developer tools to debug the code that is running on the device in real time. 
+Das korrekte Benutzen der Entwickler-Werkzeuge im Firefox (oder welchen Browser du auch immer benutzt) ist ein wichtiger Schritt, um ein besserer Programmierer zu werden. Darum empfehle ich jeden, den obigen Links zu folgen, um mehr mit den verfügbaren Werkzeugen im Firefox vertraut zu werden.
 
-## Summary
+__ FIXME: Link auf Deutsch __
 
-This chapter provided a brief tour of the developer tools that come bundled with Firefox. Using these tools will make your development process easier, specially when you use them together with the Firefox OS simulator. They are an indispensable combination for putting together an application. In the next chapter we're going to learn more about the simulator and how to make the best use of it.
+Ein besonderes Werkzeug, auf dass ich oben nicht eingegangen bin, ist der [*Remote-Debugger*](https://developer.mozilla.org/en-US/docs/Tools/Remote_Debugging). Dieser erlaubt es, ein Android- oder FirefoxOS-Gerät mit dem Rechner zu verbinden und die Entwickler-Werkzeuge zu benutzen, um Code in Echtzeit auf dem Gerät zu debuggen.
+
+## Zusammenfassung 
+
+Dieses Kapitel bot eine kurze Einführung in die Entwickler-Werkzeuge, die mit Firefox ausgeliefert werden. Das Benutzen dieser wird den Entwicklungsprozess vereinfachen, insbesondere, wenn du sie zusammen mit dem Firefox OS Simulator benutzt. Sie sind unersetzlich beim Zusammensetzen einer Anwendung. Im nächsten Kapitel werden wir mehr über den Simulator lernen und damit, wie wir das beste aus ihm 'rausholen.
