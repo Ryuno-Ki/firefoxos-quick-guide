@@ -1,38 +1,43 @@
-# Setup For Firefox OS App Development {#setup}
+# Setup für Firefox OS App-Entwicklung {#setup}
 
-## The Gecko Engine
-Browsers use different engines for rendering web pages: Google Chrome and Opera use Blink (a fork of WebKit), Internet Explorer uses Trident, while Safari uses WebKit. Mozilla has its own engine, called Gecko which is used in Firefox desktop, Firefox for Android, and Firefox OS. As these products use the same engine, it is possible to develop for Firefox OS using the Firefox desktop browser (but with some caveats[^engines]).
+## Die Gecko-Engine
 
-[^engines]: Although the same engine is used for all Mozilla products, the version of the engine in Firefox OS is generally behind that of the desktop browser. This is because the release cycle of Firefox OS is currently slower than that of the Desktop browser. In practice, this will mean that some features may not be available (or work as expected) when you try them out in Firefox OS - so always make sure you test your applications on a device that runs Firefox OS. Also, be mindful that users might also be on different versions of Firefox OS, so they might not have all the bleeding edge features. Be sure to always provide a fallback in case where some feature is unavailable.
+Browser benutzen verschiedene Engines, um Webseiten zu rendern: Google Chrome und Opera benutzen Blink (ein Fork von WebKit), Internet Explorer benutzt Trident, während Safari WebKit benutzt. Mozilla hat seine eigene Engine, Gecko genannt, welche im Firefox Desktop-, Firefox für Android- und Firefox OS-Browser benutzt wird. Da diese Produkte dieselbe Engine benutzen, ist es möglich, für Firefox OS zu entwickeln und dabei den Firefox Desktop-Browser zu benutzen (wenn auch mit Einschränkungen[^engines]).
 
-## What applications do you need?
+[^engines]: Auch wenn dieselbe Engine benutzt in allen Mozilla-Produkten genutzt wird, liegt die Version der Engine im Firefox OS im Allgemeinen hinter der des Desktop-Browsers zurück. Das liegt daran, dass der Veröffentlichungszyklus von Firefox OS derzeit langsamer ist als der des Desktop-Browsers. In der Praxis bedeutet das, dass einige Funktionen nicht verfügbar sein könnten (oder sich so verhalten wie erwartet), sowie du sie auf dem Firefox OS ausprobierst - von daher teste deine Anwendungen immer auf einem Firefox OS-Gerät. Behalte außerdem im Hinterkopf, dass Nutzer verschiedene Versionen von Firefox OS benutzen könnten, so dass sie nicht alle Bleeding Edge-Funktionen haben könnten. Stelle also sicher, immer auch eine Rückfall-Möglichkeit zu haben, falls eine Funktion nicht verfügbar sein sollte.
 
-To develop and test apps made for Firefox OS you will need:
+## Welche Anwendungen benötigst du?
 
- * A recent version of the [Firefox Browser](http://getfirefox.com).
- * The [Firefox OS Simulator](https://addons.mozilla.org/en-US/firefox/addon/firefox-os-simulator/). 
- * A text editor for programming[^editors].
+Um Apps für Firefox OS zu entwickeln und zu testen brauchst du:
+
+__ TODO: Deutscher Link __
+
+ * Eine aktuelle Version des [Firefox Browsers](http://getfirefox.com).
+ * Den [Firefox OS Simulator](https://addons.mozilla.org/en-US/firefox/addon/firefox-os-simulator/). 
+ * Einen Text-Editor zum Programmieren[^editors].
  
-[^editors]: There are many good editors out there with different levels of complexity and features. A very popular one that I recommend for those that don't have a favorite one is [SublimeText](http://sublimetext.com/). Personally, I use [WebStorm](http://www.jetbrains.com/webstorm/) which is a complete IDE for web app creation.
+[^editors]: Es gibt viele gute Editoren mit unterschiedlichem Grad an Komplexität und Funktionen. Ein sehr beliebter, den ich für all die empfehlen kann, die keinen Lieblingseditor haben, ist [SublimeText](http://sublimetext.com/). Persönlich benutze ich [WebStorm](http://www.jetbrains.com/webstorm/), welche eine komplette IDE zur Web-App-Entwicklung darstellt.
   
-## Installing the Firefox OS Simulator
+## Den Firefox OS Simulator installieren
 
-After installing Firefox, the next step is the installation of the Firefox OS Simulator that will be used to test our applications. With Firefox installed and running, go to the **Tools** menu and select **Add-ons**.
+Nachdem du Firefox installiert hast, besteht der nächste Schritt darin, den Firefox OS Simulator zu installieren, der zum Testen unserer Anwendungen benutzt wird. Im Firefox wechsle dazu in das **Werkzeuge**-Menü und wähle **Add-ons**.
 
-![*Tools* menu with *Add-ons** menu selected](images/originals/tools.png)
+![*Werkzeuge*-Menü mit ausgewählten *Add-ons**-Menüpunkt](images/originals/tools.png)
 
-Using the search box on the top right corner, search for **Firefox OS Simulator** and install the add-on by clicking the install button.
+Über die Suchleiste in der oberen rechten Ecke suche nach **Firefox OS Simulator** und installiere das Add-On durch Klick auf den Installieren-Knopf.
 
-![Add-on manager showing the simulator add-on](images/originals/addons-simulator.png)
+![Add-On-Manager mit dem Simulator-Add-On](images/originals/addons-simulator.png)
 
-After the installation of the add-on, you will be able to access the simulator by going to the menu **Tools -> Web Developer -> Firefox OS Simulator**. 
+Nach der Installation des Add-Ons kannst du den Simulator über das **Werkzeuge -> Web-Entwickler -> Firefox OS Simulator** erreichen.
 
-![Where you can find the simulator after is installed](images/originals/tools-web-developer-simulator.png)
+![Wo du den Simulator nach der Installation finden kannst](images/originals/tools-web-developer-simulator.png)
 
-Alternatively, you can navigate to the [Firefox OS Simulator](https://addons.mozilla.org/en-US/firefox/addon/firefox-os-simulator/) addon page, and download the simulator from there. 
+__ TODO: Link auf deutsch __
 
-## Summary
+Alternativ kannst du auch auf der [Firefox OS Simulator](https://addons.mozilla.org/en-US/firefox/addon/firefox-os-simulator/)-Add-On-Seite herunterladen und von dort installieren.
 
-In this chapter we learned that all we need to develop Firefox OS apps is the Firefox browser and the Firefox OS Simulator (and a good text editor).
+## Zusammenfassung
 
-Now that we have setup all the tools we need, lets learn some basic concepts before we build our first app.
+In diesem Kapitel haben wir gelernt, dass alles, was wir zur Entwicklung von Firefox OS Apps benötigen, der Firefox Webbrowser und der Firefox OS Simulator ist (und ein guter Text-Editor).
+
+Nachdem wir jetzt also alle benötigten Werkzeuge aufgesetzt haben, lass uns einige Grundkonzepte lernen, bevor wir unsere erste App entwickeln.
