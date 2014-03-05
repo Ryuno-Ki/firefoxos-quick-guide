@@ -1,89 +1,93 @@
-# The Firefox OS Simulator {#simulator}
+# Der Firefox OS Simulator {#simulator}
 
 ![Firefox OS Simulator Dashboard](images/originals/simulator-dashboard.png)
 
-We've installed the Firefox OS Simulator in [the chapter about preparing the environment](#setup) and we used it on the [chapter about building our first app](#firstapp). Now we're going to take a deeper look into the simulator features and learn how to do the most common tasks.
+Wir haben den Firefox OS Simulator im [Kapitel über das Vorbereitung der Umgebung]{#setup} installiert und wir benutzten ihn im [Kapitel über das Entwickeln unserer ersten App]{#firstapp}. Jetzt werfen wir einen tieferen Blick in die Funktionen des Simulators und lernen, wie übliche Aufgaben erledigt werden.
 
-To learn more about it, check out [the Firefox OS Simulator documentation](https://developer.mozilla.org/en-US/docs/Tools/Firefox_OS_Simulator) on MDN.
+__ FIXME: Deutscher Link __
 
-## Adding Apps
+Um mehr darüber zu lernen, lies [die Firefox OS Simulator Dokumentation](https://developer.mozilla.org/en-US/docs/Tools/Firefox_OS_Simulator) im MDN.
 
-You can add both hosted and packaged apps to the simulator. Lets see how to add each type of app.
+## Apps hinzufügen
 
-### Adding packaged apps
+Du kannst sowohl Hosted als auch Packaged Apps zum Simulator hinzufügen. Lass uns doch einmal sehen, wie das für jeden Typ aussieht.
 
-You already saw how to add packaged apps to the simulator during [our first app creation](#firstapp), but we're going to do a recap so I can show you what else is possible.
+### Packaged Apps hinzufügen
 
-To add a new packaged application click the **Add Directory** button on the **Simulator Dashboard** as shown in the screenshot below.
+Du hast bereits gesehen, wie Packaged Apps zum Simulator hinzugefügt werden, als wir [unsere erste App erstellt haben]{#firstapp}, aber wir wiederholen es hier noch einmal kurz, damit ich dir zeigen kann, was alles möglich ist.
 
-![Showing the *Add Directory* button that adds a packaged app to the simulator](images/originals/simulator-add-directory.png)
+Um eine neue Packaged Apps hinzuzufügen, klicke auf den **Add Directory**-Knopf im **Simulator Dashboard** wie auf dem Bildschirmfoto unten abgebildet.
 
-When you click on the button highlighted on the image, Firefox opens a file selection dialog. You should browse your hard drive and select the **app manifest file** for the application that you want to add to the simulator. If there are no issues with your manifest and your start file is ok, the application will be added and the simulator will launch with your app running. If there is anything wrong with your manifest, or some other issue, then an error report will be shown on the dashboard. 
+![Den *Add Directory*-Knopf zum Hinzufügen einer Packaged App im Simulator zeigen](images/originals/simulator-add-directory.png)
 
-![Example of an invalid manifest](images/originals/simulator-invalid-manifest.png)
+Sowie du auf den im Bild hervorgehobenen Knopf klickst, öffnet Firefox einen Dateiauswahl-Dialog. Du sollst deine Festplatte nach der **app manifest-Datei** für die hinzuzufügende Anwendung durchsuchen. Wenn es keine Probleme mit dem Manifest gab und deine Startdatei in Ordnung ist, wird die Anwendung zum Simulator hinzugefügt und gleich gestartet. Falls es irgendein Problem mit dem Manifest oder einer anderen Datei gibt, wird eine Fehlermeldung auf dem Dashboard angezeigt.
 
-Whenever you update your application you should click **Refresh** to update the version of the app on the simulator (you can also press CMD/CTRL+R on the simulator window to refresh). 
+![Beispiel einer ungültigen Manifest-Datei](images/originals/simulator-invalid-manifest.png)
 
-### Adding hosted apps
+Sowie du deine Anwendung aktualisierst, solltest du auf **Refresh** klicken, um die Version im Simulator zu aktualisieren (alternativ kannst du auch CMD/STRG+R im Simulatorfenster drücken, um zu aktualisieren).
 
-If you're building a hosted app then you should test it by using a web server. Do not try to use the method described above for hosted apps because you may miss some errors that will only happen on a hosted environment - such as serving the manifest with the wrong *MIME type*. Note that the simulator won't warn you about things like incorrect MIME types, but it's important to get such things right if you submit your app to the Mozilla Marketplace. 
+### Hosted Apps hinzufügen
 
-Most of the hosted apps are not applications built exclusively for Firefox OS but responsive design based websites that are able to adapt themselves to different devices and resolutions. These web apps usually have a complex backend that needs to be in-place for the application to work and that's why you need to test the app using a real web server running your backend stuff. 
+Falls du an einer Hosted App arbeitest, solltest du sie mit einem Webserver testen. Versuche nicht, die oben beschriebene Methode für Hosted Apps zu benutzen, denn dann könntest du einige Fehler übersehen, die nur in einer gehosteten Umgebung auftreten - beispielsweise das Ausliefern der Manifest-Datei mit dem falschen *MIME-Typ*. Behalte im Hinterkopf, dass dich der Simulator nicht über einen falschen MIME-Typ benachrichtigen wird, aber es ist wichtig, diese Dinge gleich anzugehen, bevor du eine App im Mozilla Marketplace einreichst.
 
-To run your app in the simulator, fill the URL of your application in the text entry box on the top and click the **Add URL** button.
+Die meisten Hosted Apps sind keine Anwendungen, die ausschließlich für Firefox OS entwickelt wurden, sondern responsive Websites, die in der Lage sind, sich an verschiedene Geräte und Auflösungen anzupassen. Diese Web-Apps haben gewöhnlich ein komplexes Backend, dass funktionieren muss, damit die App arbeiten kann und deswegen musst du die App mit einem tatsächlich laufenden Web-Server testen, der sich um das Backend-Zeug kümmert.
 
-![Adding a hosted app to the simulator](images/originals/simulator-add-url.png)
+Um die App im Simulator zu starten, gib die URL deiner Anwendung in das Textfeld oben ein und klicke auf den **Add URL**-Knopf.
 
-After clicking the button, the manifest is verified and if it is correct the application is added and the simulator is launched with your application running. Like when we're adding packaged apps, if something wrong happens with in the manifest you will see a report (e.g. "app submission to the marketplace needs at least an 128 icon"). 
+![Eine Hosted App zum Simulator hinzufügen](images/originals/simulator-add-url.png)
 
-As with packaged apps, whenever you update your application you should click **Refresh** to update the version of the app on the simulator (you can also press CMD/CTRL+R on the simulator window).
+Nachdem du den Knopf geklickt hast, wird das Manifest überprüft und falls es in Ordnung ist, wird die Anwendung zum Simulator hinzugefügt und gestartet. Genauso erhalten wir auch hier wie bei Packaged Apps eine Fehlermeldung, wenn etwas nicht mit der Manifest-Datei stimmt (z.B. "App-Einreichung im Marketplace benötigt mindestens ein 128 Icon").
 
-## Debugging
+Genauso wie bei Packaged Apps musst du auf **Refesh** klicken, wenn du an deiner Anwendung etwas änderst, um die Version im Simulator zu aktualisieren (oder eben CMD/STRG+R im Simulator-Fenster drücken).
 
-After the application is added to the simulator we're able to debug it by clicking the **Connect** button next to the application listing on the dashboard. This will launch the simulator with your application running and the **JavaScript Console** open and connected to your app.
+## Debuggen
 
-![What button to press](images/originals/simulator-press-connect.png)
+Nachdem die Anwendung zum Simulator hinzugefügt wurde, sind wir in der Lage, sie mit einem Klick auf den rechts neben der Anwendung platzierten **Connect**-Knopf zu debuggen. Dies wird die Anwendung im Simulator starten und die **JavaScript-Konsole** öffnen und mit deiner App verbinden.
 
-After pressing this button you will see a screen like this:
+![Welcher Knopf zu drücken ist](images/originals/simulator-press-connect.png)
 
-![Developer Tools connected to the app running on the simulator](images/originals/simulator-connected.png)
+Nachdem du den Knopf gedrückt hast, sieht dein Bildschirm in etwa so aus:
 
-With the tools connected to your app you can test your JavaScript, debug your DOM, edit styles, etc. Like those startup guys like to say: *pivot until your app is good*.
+![Entwickler-Werkzeuge, die mit einer im Simulator laufenden App verbunden wurden](images/originals/simulator-connected.png)
 
-Once your app is running well on the simulator it's time to test on a real device.
+__ FIXME: Pivot auf deutsch __
 
-## Testing apps on a real device
+Nachdem die Werkzeuge mit deiner App verbunden wurden, kannst du dein JavaScript testen, deinen DOM debuggen, Stylesheets bearbeiten usw. Wie diese Startup-Typen so schön zu sagen pflegen: *Pivotiere, bis deine App gut ist*.
 
-Nothing replaces testing on a real device. On the simulator, you test things by using a mouse and clicking on a computer screen; while on a real device you use your fingers on a touchscreen and by using physical buttons. Its a very different user and development experience. 
+Nachdem deine App also im Simulator gut läuft, wird es Zeit, sie auf einem realen Gerät zu testen.
 
-As an example why this type of testing matters, let me tell you a brief story: Some years ago,   Raphael Eckhardt (the designer who created the cover of this book) and I were building a puzzle game not that disimilar to Bejeweled. Our game involved dragging and dropping some pieces on a board and was working pretty well on the simulator. 
+## Apps auf realen Geräten testen
 
-When we then tested the game on an actual phone we realized our game components were not touch friendly at all: when placing a hand over the screen the board would vanish behind the hand. Even worst, the pieces the users were supposed to drag were smaller than the user's finger tip, so the user couldn't see what they were doing! In summary, our UX sucked very badly. That happened because we're kept trying things only on the simulator with a mouse that used a tiny cursor. When we decided to try with our fatter-than-a-cursor fingers we realized that we need to rework our UI. 
+Nichts ersetzt einen Test auf einem realen Gerät. Im Simulator testest du mit der Maus und Klicken auf einem Computer-Bildschirm; auf einem realen Gerät hingegen benutzt du deine Finger auf dem Touchscreen und bedienst physische Knöpfe. Es ist eine ganz andere Benutzer- und Entwicklungs-Erfahrung.
 
-To avoid having a similarly depressing experience, always test on a real device... or two, or more if you can get your hands on some. And test often with simple prototypes: otherwise, you can waste valuable time and money having to recreate assets. 
+Als ein Beispiel, warum diese Art des Testens von Bedeutung ist, lass mich dir eine kurze Geschichte erzählen: Vor einige n Jahren haben Raphael Eckhardt (der das Buchcover erstellt hat) und ich an einem Puzzle-Spiel ähnlich wie Bejeweled gearbeitet. Unser Spiel benutzte dabei Drag & Drop von einigen Puzzleteilen auf einem Brett und funktionierte tadellos im Simulator.
 
-You can buy a developer preview phone running Firefox OS from the [Geeksphone Shop](http://shop.geeksphone.com/en/). I recommend using a [Geeksphone Keon](http://www.geeksphone.com/) because this device has similar specs to the devices that are being launched by Mozilla's partners. 
+Als wir das Spiel auf einem tatsächlichen Smartphone getestet haben, mussten wir einsehen, dass die Spielelemente nicht im geringsten berührungsfreundlich waren: wenn eine Hand über den Bildschirm gehalten wurde, verschwand das Brett dahinter. Schlimmer noch, die Teile, die der Benutzer bewegen sollte, waren kleiner als der Finger, so dass der Spiel nicht sehen konnte, was er tat! Zusammengefasst hat unsere UX also ziemlich versagt. Das konnte nur geschehen, weil wir die Dinge nur im Simulator mit einer Maus und einem winzigen Cursor getestet hatten. Nachdem wir entschieden, es mit den viel größeren Finger zu probieren, mussten wir unsere UI überarbeiten.
 
-You can also buy a device targeted at consumers if you happen to live in one of the countries where they are already available. A third way is that you can replace Android with Firefox OS on some devices (some specific devices only, chance of bricking, don't blame me!) - but I don't recommend this unless you're a power user and like to spend a lot of time hacking.
+Um dir eine ähnlich deprimierende Erfahrung zu ersparen, teste immer auf einem realen Gerät … oder zweien oder mehr, wenn du welche zu fassen bekommst. Und teste oft mit nur einfachen Prototypen: ansonsten kannst du mitunter wertvolle Zeit und Geld verschwenden, die du in die Neuerstellung der Assets investieren musst.
 
-## Connecting with a Firefox OS device
+Du kannst Developer Preview-Geräte mit Firefox OS im [Geeksphone Shop](http://shop.geeksphone.com/en/) kaufen. Ich empfehle das [Geeksphone Keon](http://www.geeksphone.com/), weil dieses Gerät ähnliche Specs besitzt, wie es die meisten anderen Geräte haben werden, die Mozillas Partner entwickeln.
 
-If you have a Firefox OS device (and have any needed drivers installed) then you can push apps directly from the simulator to the device if the device is connected to your computer. When the simulator detects that you plugged a Firefox OS phone, it will display a notice saying **Device Connected**.
+Du kannst auch ein Gerät kaufen, dass sich an Kunden wendet, sowie du in einem der Länder lebst, wo es sie bereits gibt. Eine dritte Möglichkeit besteht darin, Android durch Firefox OS auf einigen Geräten zu ersetzen (wobei es nur bestimmte Geräte sind, die dadurch bricken können - beschwer dich dann nicht bei mir!) - aber das kann ich nicht empfehlen, es sei denn, du bist ein Power User, der seine Zeit gerne mit Hacken verbringt.
+
+## Sich mit einem Firefox OS-Gerät verbinden
+
+Falls du ein Firefox OS-Gerät besitzt (und du ggf. die nötigen Treiber nachinstalliert hast), kannst du deine Apps direkt vom Simulator auf das Gerät pushen, wenn es mit deinem Computer verbunden ist. Sowie der Simulator ein verbundenes Firefox OS-Smartphone entdeckt, erscheint eine Notiz **Device Connected** auf dem Bildschirm.
 
 ![Device Connected!](images/originals/simulator-device-connected.png)
 
-If your phone is connected (and detected) the simulator will add a new button next to **Refresh** and **Connect** called **Push**. When you press this button, a **permission request dialog** appears on the device screen asking for confirmation to install the pushed app.
+Falls dein Gerät verbunden (und erkannt) wurde, fügt der Simulator einen weiteren Knopf neben **Refresh** und **Connect** hinzu, der mit **Push** beschriftet ist. Wenn du diesen betätigst, erscheint ein **Berechtigungsfenster** auf dem Bildschirm des Geräts, der nach einer Bestätigung zur Installation der gepushten App fragt.
 
-![Which button to press to push apps to the connected device](images/originals/simulator-press-push.png)
+![Der zu drückende Knopf, um eine App auf ein verbundenes Gerät zu pushen](images/originals/simulator-press-push.png)
 
-And below we can see the permission request screen.
+Und unten können wir die Berechtigungsanfrage sehen.
 
-![Not the best picture in the world but shows the permission screen (sorry for the face it was 4:25 AM)](images/originals/simulator-remote-push.jpg)
+![Nicht das beste Bild in der Welt, aber es zeigt die Berechtigungsanfrage (entschuldigt das Gesicht, es war 4:25 Uhr in der Frühe)](images/originals/simulator-remote-push.jpg)
 
-With the application running on the device you can use *remote debugging* to connect a JavaScript console and debug the app.
+Nachdem die Anwendung auf dem Gerät läuft, kannst du *Remote Debugging* benutzen, um eine JavaScript-Konsole zum Debuggen der App zu verbinden.
 
-## Summary
+## Zusammenfassung 
 
-In summary, the Firefox OS Simulator is awesome for building Firefox OS specific apps - but has some limitations if you are trying to build for a range of devices (e.g. currently, you can't emulate what Firefox OS would feel like on a tablet). 
+Zusammengefasst ist der Firefox OS Simulator ein beeindruckendes Werkzeug, um Firefox OS-spezifische Apps zu entwickeln - aber es hat einige Einschränkungen, wenn du für eine Reihe von Geräten entwickeln willst (beispielsweise kann er nicht emulieren, wie sich Firefox OS auf einem Tablet anfühlen würde).
 
-Besides feeling awesome and empowered, by this point in the book you hopefully have a good grasp of the workflow for building apps for Firefox OS. In the next chapter we're going to see how you can distribute your apps to users.
+Abgesehen davon, dass du dich beeindruckend und mächtig anfühlst, sollte dir das Buch an diesem Punkt hoffentlich einen guten Eindruck vom Workflow zum Erstellen von Apps für Firefox OS-Apps gegeben haben. Im nächsten Kapitel sehen wir uns an, wie wir unsere Apps an Nutzer verteilen können.
