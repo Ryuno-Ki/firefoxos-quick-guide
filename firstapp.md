@@ -1,32 +1,36 @@
-# Our First App {#firstapp}
+# Unsere erste App {#firstapp}
 
-![Memos, a minimalist notepad app](images/originals/memos-app.png)
+![Memos, eine minimalistische Notizen-App](images/originals/memos-app.png)
 
-In this chapter we're going to build a simple **Memos** application, which is an application for taking notes. Before coding, let's review how this app works. 
+In diesem Kapitel werden wir eine einfache **Memos**-Anwendung entwickeln, also eine Anwendung zum Aufnehmen von Notizen. Bevor wir mit dem Code schreiben anfangen, lass uns die Arbeitsweise durchgehen.
 
-The app has three screens. The first one is the main screen and has a list of your stored notes by title. When you click a note (or add a new one) you're moved to the detail screen that allows you to edit the content and title of the given note. This is shown in the figure below. 
+Die App besitzt drei Ansichten. Die erste ist die Hauptdarstellung und beinhaltet eine Liste aller gespeicherten Notizen anhand ihres Titels. Wenn du auf eine Notiz klickst (oder eine neue erstellst), wirst du zu einer Detailansicht geleitet, die dir eine Bearbeitung des Inhalts und Titels erlaubt. Dies wird in der Abbildung unten dargestellt.
 
-![Memos, editing screen](images/originals/memos-editing-screen.png)
+![Memos, Bearbeitungssicht](images/originals/memos-editing-screen.png)
 
-On the screen shown above the user can choose to delete the selected note by clicking on the trash icon. This will cause a confirmation dialog to be shown.
+In der obigen Ansicht kann der Benutzer eine bestimmte Notiz löschen, indem er auf den Papierkorb klickt. Dies ruft eine Bestätigungsabfrage hervor.
 
-![Memos, note removal confirmation screen](images/originals/memos-delete-screen.png)
+![Memos, Bestätigungsabfrage zum Löschen einer Notiz](images/originals/memos-delete-screen.png)
 
-The source code for Memos is available at [the Memos Github Repo](https://github.com/soapdog/memos-for-firefoxos) (also available as a [.zip](https://github.com/soapdog/memos-for-firefoxos/archive/master.zip) file). I recommend you download the files, so it's easier to follow along. Another copy of the source code is available on the **code** folder inside the [github repository for this book](https://github.com/soapdog/firefoxos-quick-guide).
+Der Quellcode von Memos ist im [Memos GitHub-Repo](https://github.com/soapdog/memos-for-firefoxos) verfügbar (ebenfalls als [.zip](https://github.com/soapdog/memos-for-firefoxos/archive/master.zip)-Archiv). Ich empfehle dir, die Dateien herunterzuladen, so dass du den Vorgang leichter mitverfolgen kannst. Eine weitere Kopie des Quellcodes findet sich im **code**-Ordner innerhalb des [GitHub-Repositorys für dieses Buch](https://github.com/soapdog/firefoxos-quick-guide).
 
-Memos uses [IndexedDB](https://developer.mozilla.org/en-US/docs/IndexedDB/Using_IndexedDB) to store the notes and the [Gaia Building Blocks](http://buildingfirefoxos.com/building-blocks) to build the interface. In a future update to this book I will talk more about the Gaia Building Blocks, but at the moment I am just going to use them. You can check the link above to learn more about them and what user interface tools they provide.
+__ FIXME: Deutscher Link __
 
-The first step is to create a folder for the application, let's call this folder **memos**.
+Memos benutzt [IndexedDB](https://developer.mozilla.org/en-US/docs/IndexedDB/Using_IndexedDB), um die Notizen zu speichern und die [Gaia Building Blocks](http://buildingfirefoxos.com/building-blocks), um die Oberfläche aufzubauen. In einer späteren Ausgabe dieses Buches werde ich mehr über die Building Blocks sprechen, aber für den Augenblick benutze ich sie einfach. Du kannst die obigen Links benutzen, um mehr über sie zu erfahren und welche Oberflächen-Werkzeuge sie bereitstellen.
 
-## Creating the app manifest
+Der erste Schritt besteht darin, einen Ordner für die Anwendung zu erstellen; nennen wir ihn **memos**:
 
-Memos manifest is pretty straight forward. Create a file named **manifest.webapp** on the **memos** folder. Manifests are [JSON](http://json.org) files that describes an application. In this file we place things such as the name of the app, who the developer is, what icons are used, what file is used to launch the app, what privileged APIs it would like to use, and more.
+## Erstellen des App-Manifests
 
-Below we can see the contents of the Memos app manifest. Attention when copying this data because it's very easy to place a comma on the wrong place and create an invalid JSON. There are many tools that you can use to validate JSON files but there is a special one that is built specifically for validating app manifests. You can check out this online tool at [http://appmanifest.org/](http://appmanifest.org/). To learn more about app manifests read [this page on MDN about them](https://developer.mozilla.org/docs/Apps/Manifest).
+Das Manifest von Memos ist ziemlich selbsterklärend. Erstelle eine Datei namens **manifest.webapp** im **memos**-Ordner. Die Manifeste sind [JSON](http://json.org)-Dateien, welche eine Anwendung beschreiben. In dieser Datei werden Dinge festgehalten wie der Name der App, wer der Entwickler ist, welche Icons benutzt werden sollen, welche Datei beim Start aufgerufen werden soll, welche privilegierten APIs du gerne benutzen möchtest und mehr.
 
-<<[Memos manifest file (*manifest.webapp*)](code/memos/manifest.webapp)
+Unten sehen wir den Inhalt der Memos Manifest-Datei. Pass auf, wenn du diese Datei kopierst, denn es ist sehr leicht, ein Komma an der falschen Stelle zu platzieren und damit ein invalides JSON zu erhalten. Es gibt viele Werkzeuge, mit denen du JSON-Dateien validieren kannst, aber ein spezielles zum Prüfen von App Manifeste. Du findest dieses Werkzeug unter[http://appmanifest.org/](http://appmanifest.org/). Um mehr über App-Manifeste zu lernen, lies [diese Seite auf MDN über sie](https://developer.mozilla.org/docs/Apps/Manifest).
 
-Let's review the fields from the manifest above.
+<<[Manifest-Datei von Memos(*manifest.webapp*)](code/memos/manifest.webapp)
+
+Lass uns einmal die einzelnen Felder davon durchgehen.
+
+__ FIXME: Better solution for this! __
 
 |Field		|Description                                                                        |
 |-----------|-----------------------------------------------------------------------------------|
@@ -37,27 +41,29 @@ Let's review the fields from the manifest above.
 |developer  |Who developed this application 													|
 |icons		|The icons used by the app in many different sizes.									|
 
-The most interesting part of this manifest is the permissions field where we ask for the *storage* permission that allows us to use IndexedDB without size restrictions[^storage-permission] (thanks to that permission we can store as many notes as we want - though we should be mindful not to use too much of the user's disk space!).
+Der interessanteste Teil dieses Manifests ist das Berechtigungsfeld, wo wir um die *storage*-Berechtigung bitten, die uns die Benutzung von IndexedDB ohne Einschränkungen[^storage-permission] erlaubt (dank dieser Berechtigung können wir dann also so viele Notizen speichern, wie wir wollen - auch wenn wir darauf bedacht sein sollten, nicht zu viel Speicher zu belegen!).
 
-[^storage-permission]: To learn more about permissions read [the page on MDN about app permissions](https://developer.mozilla.org/en-US/docs/Web/Apps/App_permissions).
+__ FIXME: Deutscher Link? __
 
-Now that the manifest is ready let's move on to the HTML.
+[^storage-permission]: Um mehr über Berechtigungen zu erfahren lies [die Seite auf MDN über App-Berechtigunge(https://developer.mozilla.org/en-US/docs/Web/Apps/App_permissions).
 
-## Building the HTML
+Jetzt wo das Manifest steht, lass uns zum HTML übergehen.
 
-Before we start working on the HTML, let's take a brief detour to talk quickly about the [Gaia Building Blocks](http://buildingfirefoxos.com/building-blocks), which are a collection of reusable CSS and JS with the *look and feel* of Firefox OS that we can use on our own apps.
+## Das HTML erstellen
 
-Just like on the Web, you're not required to use the *look and feel* of Firefox OS in your own app. Using or not using the Gaia Building Blocks is a personal decision - and a good applications should have its own distinctive style and user experience. The important thing to understand is that your app will not suffer any type of prejudice or penalty on the Firefox Marketplace by not using the Gaia look and feel. I am using it here because I am not a good designer so ready made UI toolkits appeal to me (it's either that or hiring a designer).
+Bevor wir uns dem HTML zuwenden, lass uns einen schnellen Ausflug zu den [Gaia Building Blocks](http://buildingfirefoxos.com/building-blocks) machen, welche eine Sammlung von wiederverwendbaren CSS und JavaScript darstellen, um das *Look and Feel* von Firefox OS in unseren eigenen Apps wiederzugeben.
 
-The HTML structure that we use in this application was built following the patterns adopted by the Gaia Building Blocks where each screen is a `<section>` and the elements follow a predefined format. If you haven't already, download the source code from the [memos repository](https://github.com/soapdog/memos-for-firefoxos) so that you have the files (including the Building Blocks) to use. For those not confident with git and GitHub, the files are also available as a [.zip file](https://github.com/soapdog/memos-for-firefoxos/archive/master.zip). 
+Wie auch in anderen Bereichen des Internets zwingt dich auch hier niemand, dass *Look and Feel* von Firefox OS in deine eigene Apps zu übernehmen. Die Verwendung der Gaia Building Blocks ist eine Frage des persönlichen Geschmacks - und eine gute Anwendung sollte ihren ihr eigenen Stil und Benutzererfahrung haben. Der Punkt besteht darin, zu verstehen, dass deine App keine Strafe oder Abwertung im Firefox Marketplace erhalten wird, wenn du nicht den Look and Feel von Gaia übernimmst. Ich verwende es hier, weil ich nicht so ein guter Designer bin und daher fertig benutzbarer Oberflächen auf mich ansprechend wirken (entweder das oder ich muss mir einen Designer einstellen).
 
-W> Warning: The version of the Gaia Building Blocks I used for this app is not the most up-to-date available from Mozilla. Trying to update to the current version will, unfortunately, break the Memos app. In your own projects, however, always use the latest version of the Gaia Building Blocks.
+Die HTML-Struktur in unserer Anwendung wurde nach einigen Mustern in den Gaia Building Blocks ausgerichtet, bei der jeder Bildschirm in einem eigenen `<section>` eingeschlossen wird und die Elemente einem vordefinierten Format folgen. So du es noch nicht getan hast, lade dir den Quellcode vom [Memos Repository](https://github.com/soapdog/memos-for-firefoxos) herunter, so dass du die Dateien (einschließlich der Building Blocks) zur Verfügung hast. Sofern du nicht mit git und GitHub vertraut bist, findest du die Dateien auch als [.zip-Archiv](https://github.com/soapdog/memos-for-firefoxos/archive/master.zip). 
 
-### Including the Building Blocks
+W> Warnung: Die von mir benutzte Version der Gaia Building Blocks ist nicht die aktuellste, die Mozilla bereitstellt. Wenn ich versuche, auf die neueste zu aktualisieren, zerbricht daran leider meine Memos App. Versuche aber in deinen eigenen Projekten, die jeweils neueste Version der Gaia Building Blocks zu benutzen.
 
-Before doing anything else copy the **shared** and the **styles** folders that you obtained by downloading the Memos repository to the **memos** folder you created. This will allow use to use the Gaia Building Blocks in our app. 
+### Die Building Blocks einbinden
 
-Let's begin our **index.html** files by including the needed bits.
+Bevor du irgendetwas machst, kopiere dir die Ordner **shared** und **styles** aus dem Memos-Repository in den **memos**-Ordner, den du angelegt hast. Dies erlaubt es uns, die Gaia Building Blocks in unserer App zu benutzen.
+
+Lass uns mit der **index.html** anfangen, indem wir die benötigten Schnippsel einfügen.
 
 ~~~~~~~~
 <!DOCTYPE html>
@@ -81,11 +87,11 @@ Let's begin our **index.html** files by including the needed bits.
 </head>
 ~~~~~~~~
 
-On *line 01* we declare the DOCTYPE as HTML5. From *line 05 up to 15* we include the CSS from the various components that we're going to use in our app such as headers, lists, text entry fields and more.
+In *Zeile 01* deklarieren wir den DOCTYPE als HTML5. Von *Zeile 05 bis 15* binden wir das CSS für die verschieden Komponenten ein, die wir in unserer App benutzen werden, etwa Kopfzeilen, Listen, Textfelder und mehr.
 
-### Building the main screen
+### Die Hauptansicht erstellen
 
-Now we can start building the various screens. As mentioned earlier, each screen used by our app is a `<section>` inside the HTML `<body>`. The body tag must have an attribute *role* with its value equal to *application* because that is used by the CSS selectors to build the interface, so our body tag will be `<body role="application">`. Let's build the first screen and declare our body tag as well.
+Jetzt können wir anfangen, die verschiedenen Ansichten zu erstellen. Wie ich bereits früher erwähnte, liegt jede Ansicht unserer App innerhalb einer `<section>`, die sich im `<body>`-Tag befindet. Dieses wiederum muss das Attribut *role* mit dem Wert *application* besitzen, damit die CSS-Selektoren darauf zugreifen können, um das Interface zu konstruieren. Von daher wird unser Body-Tag die Gestalt `<body role="application">`haben. Lass uns also die erste Ansicht erstellen und dabei auch den Body-Tag deklarieren.
 
 ~~~~~~~~
 <body role="application">
@@ -101,15 +107,15 @@ Now we can start building the various screens. As mentioned earlier, each screen
 </section>
 ~~~~~~~~
 
-Our screen has a `<header>` containing a button to add new notes and the application name. The screen also has an `<article>` which will be used to hold the list of stored notes. We're going to use the button and the article IDs to capture events when we reach the JavaScript implementation part.
+Unsere Ansicht hat einen `<header>`, der einen Knopf zum Hinzufügen neuer Notizen beinhaltet, und einen Anwendungsnamen. Daneben besitzt sie auch einen `<article>`, der die Liste aller gespeicherten Notizen beinhalten wird. Wir werden den Knopf und die article-IDs benutzen, um Events zu fangen, wenn wir später den Abschnitt zur JavaScript-Implementierung erreichen.
 
-Be aware that each screen is a fairly straight forward HTML chunk. Building these same screens in many languages usually requires a lot more work. All we're doing is declaring our containers and giving them IDs when we need to reference them later.
+Sieh nur, wie jede Ansicht ein regelrecht selbsterklärender Teil HTML darstellt. Genau solche Bildschirme in verschiedenen Programmiersprachen umzusetzen, bedarf normalerweise eine Menge Arbeit. Hier deklarieren wir nur unsere Container und geben ihnen IDs, um später auf sie zu referenzieren.
 
-Now that the main screen is done, let's build the editing screen.
+Jetzt wo die Hauptansicht fertig ist, kümmern wir uns um die Darstellung zum Bearbeiten.
 
-### Building the editing screen
+### Die Bearbeitungsansicht erstellen
 
-The editing screen is a bit more complex because it also holds the dialog box used when the user tries to delete a note.
+Die Darstellung zum Bearbeiten ist ein wenig komplexer, denn sie beinhaltet auch die Dialog-Boxen, die benutzt werden, wenn der Benutzer eine Notiz löschen möchte.
 
 ~~~~~~~~
 <section role="region" id="memo-detail" class="skin-dark hidden">
@@ -150,17 +156,17 @@ The editing screen is a bit more complex because it also holds the dialog box us
 </section>
 ~~~~~~~~
 
-At the top of the screen, represented by the `<header>` element, we have: 
+Am oberen Ende des Bildschirms, repräsentiert durch das `<header>`-Element, haben wir:
 
- * a back button to return to the main screen, 
- * a text entry field that is used to hold the title of the given note, 
- * and a button that is used to share the note over email.
+ * einen Zurück-Knopf, um zur Hauptansicht zurückzukehren,
+ * ein Textfeld, der den Titel der jeweiligen Notiz aufnimmt,
+ * und einen Knopf, der uns die Notiz über E-Mail teilen lässt.
 
-Below the top toolbar, we have a paragraph holding a `<textarea>` that holds the content of the note and then another toolbar with a trashcan button used to delete the current viewed note.
+Unterhalb der oberen Werkzeugleiste befindet sich ein Absatz mit einer `<textarea>`, welche den Inhalt der eigentlichen Notiz aufnimmt und eine weitere Werkzeugleiste mit einem Mülleimer-Knopf zum Löschen der gerade dargestellten Notiz.
 
-These three elements and their child nodes are the editing screen. After them we have a `<form>` that is used as a dialog box containing the confirmation screen that is presented to the user when he or she tries to delete a note. This dialog box is pretty simple, it only contains the text of the confirmation prompt and two buttons; one for deleting the note and another for canceling the action.
+Diese drei Elemente und ihre Child Nodes bilden die Bearbeitungsansicht. Darunter haben wir eine `<form>`, die als Dialog-Kasten benutzt wird und den Bestätigungsdialog beinhaltet, der einem Benutzer gezeigt, wenn er eine Notiz löschen will. Dieser Dialog ist sehr schlicht gehalten, denn er beinhaltet nur den Text mit der Bestätigungsfrage und zwei Knöpfe; einer zum Löschen der Notiz, der andere zum Abbrechen.
 
-Now that we're closing this `<section>` we have all our screens implemented and the remaining HTML code is only there to include the JavaScript files and close the html file.
+Jetzt, wo wir zum Schließen dieser `<section>' kommen, haben wir alle Bildschirme implementiert und der verbleibende HTML-Code dient ausschließlich dem Einbinden der JavaScript-Dateien und des Abschließens der HTML-Datei.
 
 ~~~~~~~~
 <script src="/js/model.js"></script>
@@ -169,22 +175,26 @@ Now that we're closing this `<section>` we have all our screens implemented and 
 </html>
 ~~~~~~~~
 
-## Crafting the JavaScript code
+## Den JavaScript-Code herstellen
 
-Now we're going to breathe life into our app by adding JavaScript. To better organize this code, I've divided the JavaScript code into two files:
+Jetzt bringen wir Leben in unsere App, indem wir JavaScript hinzufügen. Um den Code besser zu organisieren, habe ich den JavaScript-Code in zwei Dateien aufgeteilt:
 
-* **model.js:** contains the routines to deal with storage and retrieval of notes but does not contain any app logic or anything related to the interface or data entry. In theory, we could reuse this same file in other apps that required text notes.
-* **app.js:** attaches the HTML elements with their event handlers and contains the app logic.
+* **model.js:** enthält die Routinen, um mit dem Speicher umzugehen und die Noten zu empfangen, aber beinhaltet keine App-Logik oder irgendetwas, was mit der Oberfläche oder den Datei-Einträgen zu tun hätte. Theoretisch könnten wir diese Datei in anderen Apps wiederverwerten, die auch Textnotizen benötigen.
+* **app.js:** Bindet die Event-Handler an ihre HTML-Elemente und beinhaltet die App-Logik.
 
-Both files should be placed inside a **js** folder next to the **style** and **shared** folders.
+Beide Dateien sollten innerhalb eines **js**-Ordners gespeichert werden, der auf gleicher Höhe wie die **style**- und **shared**-Ordner liegt.
 
 ### model.js
 
-We're going to use [IndexedDB](https://developer.mozilla.org/en-US/docs/IndexedDB/Using_IndexedDB) to store our notes. Since we asked the *storage* permission on the app manifest we can store as many notes as we want - however, we should not abuse this! Firefox OS devices generally have very limited storage space, so you always need to be mindful of what data you store (users will delete and down-rate your app if it uses too much storage space!). And storing excessive amounts of data will have a performance penalty, which will make your app feel sluggish. Please also note that when you submit an application to the Firefox OS Marketplace, reviewers will ask you why you need unlimited storage space - if you can't justify why, your application will be rejected.  
+__ FIXME: Deutscher Link? __
 
-The part of the code from *model.js* that is shown below is responsible for opening the connection and creating the storage.
+Wir werden [IndexedDB](https://developer.mozilla.org/en-US/docs/IndexedDB/Using_IndexedDB) benutzen, um unsere Notizen zu speichern. Da wir nach der *storage*-Berechtigung gefragt haben, können wir so viele Notizen speichern, wie wir wollen - wir sollten dies allerdings nicht missbrauchen! Firefox OS-Geräte haben im Allgemeinen sehr wenig Speicher zur Verfügung, so dass du dir immer Gedanken darüber machen solltest, welche Daten du speichern willst (die Benutzer werden deine App entfernen und eine schlechte Bewertung abgeben, wenn sie zu viel Speicherplatz benötigt!). Daneben wird das Speichern von sehr großen Datenmengen eine Performance-Einbuße nach sich ziehen, die dazu führt, dass sich die App träge anfühlt. Bedenke also auch bitte, dass dich die Reviewer fragen werden, warum du unbegrenzten Speicherplatz benötigst, sowie du deine Anwendung im Firefox Marketplace einreichst - wenn du es also nicht begründen kannst, wird die Anwendung zurückgewiesen werden.
 
-A> Important: This code was written to be understood easily and does not represent the best practices for JS programming. Some global variables are used (I'm so going to hell for this) among other tidbits. The error handling code is basically non-existant. The main objective of this book is to teach the *workflow* of developing apps for Firefox OS and not teaching best JS patterns. That being said, depending on feedback, I will update the code in this book to better reflect best practices if enough people think it will not impact the beginners.
+Der Code-Abschnitt unten aus *model.js* ist dafür verantwortlich, die Verbindung aufzubauen und den Speicher anzulegen.
+
+__ FIXME: Tidbits auf deutsch __
+
+A> Wichtig: Dieser Code wurde so geschrieben, dass er leicht verständlich ist. Von daher spiegelt er nicht die Best Practices in JavaScript-Programmierung wider. Es werden einige globale Variablen benutzt (für die ich eines Tages in der Hölle landen werde), sowie einige weitere TIDBITS. Die Fehlerbehandlung ist gewissermaßen nicht vorhanden. Das Hauptanliegen dieses Buches liegt darin, den *Workflow* der App-Entwicklung für Firefox OS beizugringen und nicht die besten JavaScript-Entwurfsmuster zu vermitteln. Nachdem wir das also geklärt hätten, werde ich den Quellcode gemäß den Best Practices überarbeiten, wenn genügend Leute denken, dass es nicht Anfänger abschrecken wird.
 
 ~~~~~~~
 var dbName = "memos";
@@ -232,13 +242,13 @@ request.onupgradeneeded = function (event) {
 }
 ~~~~~~~
 
-A> Important: Forgive me again for the globals, this is an educational resource only. Another detail is that I removed the comments from the source code to save space in the book. If you pick the source from GitHub you will get all the comments.
+A> Wichtig: Vergib mir noch einmal für die globalen Variablen, dies ist nur ein Lehrmaterial. Ein weiteres Detail besteht darin, dass ich die Kommentare aus dem Quellcode entfernt habe, um den Speicherplatz für dieses Buch zu sparen. Wenn du dir den Quellcode von GitHub herunterlädst, erhälst du alle Kommentare mit.
 
-The code above creates a *db* object and a *request* object. The *db* object is used by other functions in the source to manipulate the notes storage.
+Der Code oben erstellt ein *db*-Objekt und ein *request*-Objekt. Das erste wird von anderen Funktionen im Quellcode benutzt, um den Notizen-Speicher zu manipulieren.
 
-On the implementation of the `request.onupgradeneeded` function we also create a welcome note. This function is executed when the application runs for the first time (or when the database version changes). This way once the application launches for the first time, the database is initialized with a single welcome note.
+Mit der Implementiertung der `request.onupgradeneeded`-Funktion erstellen wir auch gleich eine Willkommens-Botschaft. Diese Funktion wird beim ersten Start ausgeführt (oder wann immer sich die Datenbank-Version ändert). Auf diese Weise wird die Datenbank beim ersten Start gleich mit einer einzigen Notiz befüllt.
 
-With our connection open and the storage initialized its time to implement the basic functions for note manipulation.
+Nachdem unsere Verbindung jetzt geöffnet wurde und der Speicher initialisiert, wird es Zeit, die grundlegenden Funktionen zum Manipulieren von Notizen zu schreiben.
 
 ~~~~~~~~
 function Memo() {
@@ -303,15 +313,15 @@ function deleteMemo(inId, inCallback) {
 }
 ~~~~~~~~
 
-On the piece of code above we create a constructor function that creates new Memos with some fields already initialized. After that we implement functions for listing, saving and removing notes. Many of these functions receive a callback parameter called `inCallback` which is a function to be called after the function does its thing. This is needed due to the asynchronous nature of IndexedDB. All callbacks have the same signature which is `callback(error, value)` where one of the values is null depending on the outcome of the previous function.
+Im Code-Abschnitt oben haben wir eine Konstruktor-Funktion erstellt, die neue Memos erstellt, in denen einige Felder bereits ausgefüllt sind. Danach haben wir die Funktionen zum Auflisten, Speichern und Entfernen von Notizen implementiert. Viele dieser Funktionen erhalten einen Callback-Parameter namens `inCallback`, der eine Funktion darstellt, die aufgerufen wird, wenn die aufrufende Funktion fertig ist. Dies ist aufgrund der asynchronen Natur von IndexedDB notwendig. Alle Callbacks haben die selbe Natur, konkret `callback(error, value)`, wobei immer einer der Argumente null ist, abhängig vom Ergebnis der vorigen Funktion.
 
-A> Since this is a beginner book I've opted not to use [*Promises*](https://developer.mozilla.org/en-US/docs/Mozilla/JavaScript_code_modules/Promise.jsm/Promise) since many beginners are not familiar with the concept. I recommend using such concepts to create easier to maintain code that is more pleasant to read.
+A> Da dies ein Einsteiger-Buch ist, habe ich mich entschlossen, keine [*Promises*](https://developer.mozilla.org/en-US/docs/Mozilla/JavaScript_code_modules/Promise.jsm/Promise) zu benutzen, da die meisten Anfänger nicht so vertraut mit diesem Konzept sind. Ich empfehle solche aber, da sie den Code leichter wartbar machen und angenehmer zu lesen sind.
 
-Now that our note storage and manipulation functions are ready, let's implement our app logic in a file called **app.js**.
+Jetzt wo unser Notizenspeicher und die -manipulationsfunktionen bereit sind, lass uns die App-Logik in einer Datei namens **app.js** implementieren.
 
 ### app.js
 
-This file will contain our app logic. Since the source code is too large for me to place it all at once on the book, I will break it in parts and explain each part piece by piece.
+Diese Datei wird unsere App-Logik beinhalten. Da der Quellcode zu groß ist, um ihn als Ganzes im Buch abzudrucken, werde ich ihn in kleinere Teile aufbrechen und diese nach und nach erklären.
 
 ~~~~~~~~
 var listView, detailView, currentMemo, deleteMemoDialog;
@@ -362,15 +372,15 @@ function newMemo() {
 }
 ~~~~~~~~
 
-At the beginning we declare some global variables (yuck!!!) to hold references to some DOM elements that we want to use later inside some functions. The most interesting global is `currentMemo` which is an object that holds the current note that the user is reading.
+Zu Beginn deklarieren wir einige globale Variablen (pfui!!!), um Referenzen auf einige DOM-Elemente darin zu halten, die wir später in einigen Funktionen benötigen. Die interessanteste Globale ist `currentMemo`, welche ein Objekt darstellt, die die aktuell vom Benutzer geöffnete Notiz beinhaltet.
 
-The `showMemoDetail()` and `displayMemo()` functions work together. The first one loads the selected note into the `currentMemo` and manipulates the CSS of the elements so that the editing screen is shown. The second one picks the content from the `currentMemo` variable and places it on the screen. We could do both things on the same function but having them separate makes it easier to experiment with new implementations.
+Die `showMemoDetail()`- und `displayMemo()`-Funktionen arbeiten zusammen. Die erste lädt eine gewählte Notiz in die `currentMemo`-Variable und manipuliert das CSS der Elemente, so dass die Editier-Ansicht gezeigt wird. Die zweite pickt sich den Inhalt der `currentMemo`-Variable und stellt sie auf dem Bildschirm dar. Wir könnten beides in einer Funktion zusammenführen, aber das Trennen macht es leichter, mit neuen Implementierungen herzuexperimentieren.
 
-The `shareMemo()` function uses a [WebActivity](https://hacks.mozilla.org/2013/01/introducing-web-activities/) to open the email application with a new message pre-filled with the selected notes content. 
+Die `shareMemo()`-Funktion benutzt eine [WebActivity](https://hacks.mozilla.org/2013/01/introducing-web-activities/), um eine E-Mail-Anwendung zu öffnen und die Nachricht mit der gewählten Notiz vorzufüllen. 
 
-The `textChanged()` function picks the data from the entry fields and place them into the `currentMemo` object and then saves the note. This is done because the application is an `auto-save` app where your content is always saved. All alterations on the content or title of the note will trigger this function and the note will always be saved on the IndexedDB storage.
+Die `textChanged()`-Funktion holt sich die Daten aus den Eintrags-Feldern und legt sie im `currentMemo`-Objekt ab und speichert anschließend die Notiz. Das sorgt für eine `auto-save` App, bei der der Inhalt immer gespeichert wird. Jegliche Änderung am Inhalt oder Titel triggert diese Funktion und die Notiz wird immer im IndexedDB-Speicher gesichert werden.
 
-The `newMemo()` function creates a new note and opens the editing screen with it.
+Die `newMemo()`-Funktion erstellt eine neue Notiz und öffnet ihre Editier-Ansicht:
 
 ~~~~~~~~
 function requestDeleteConfirmation() {
@@ -399,11 +409,11 @@ function showMemoList() {
 }
 ~~~~~~~~
 
-The `requestDeleteConfirmation()` function is responsible for showing the note removal confirmation dialog.
+Die `requestDeleteConfirmation()`-Funktion ist dafür verantwortlich, den Löschen-Bestätigungs-Dialog zu zeigen.
 
-The `closeDeleteMemoDialog()` and `deleteCurrentMemo()` are triggered by the buttons on the removal confirmation dialog.
+Die `closeDeleteMemoDialog()` und die `deleteCurrentMemo()`-Funktionen werden von den Knöpfen des obigen Dialogs getriggert.
 
-The `showMemoList()` function does some clean up before showing the list of stored notes. For example, it cleans the content of `currentMemo` since we're not reading any memo yet.
+Die `showMemoLit()`-Funktion räumt ein bisschen auf, bevor sie die Liste der gespeicherten Notizen anzeigt. Beispielsweise wird der Inhalt von `currentMemo` geleert, da wir ja noch gerade keine Memo lesen.
 
 ~~~~~~~~
 function refreshMemoList() {
@@ -449,9 +459,9 @@ function refreshMemoList() {
 }
 ~~~~~~~~
 
-The `refreshMemoList()` function modifies the DOM by building element by element the list of notes that is displayed on the screen. It would be a lot easier to use some templating aid such as [handlebars](http://handlebarsjs.com/) or [underscore](http://underscorejs.org/) but since this app is built using nothing but *vanilla javascript* we're doing everything by hand. This function is called by `showMemoList()` that was shown above.
+Die `refreshMemoList()`-Funktion verändert den DOM, indem es die Element für Element die Liste der Notizen auf dem Bildschirm erstellt. Es wäre wesentlich einfacher, hier einige Vorlagen-Helfer wie [handlebars](http://handlebarsjs.com/) oder [underscore](http://underscorejs.org/) zu benutzen, aber da diese App nur aus *vanilla JavaScript* besteht, werden wir alles von Hand schreiben. Die Funktion heißt `showMemoList()`, wie oben bereits gezeigt.
 
-These are all the functions used by our app. The only part of the code that is missing is the initialization of the event handlers and the initial call of `refreshMemoList()`.
+Dies sind alle Funktionen, die unsere App benutzt. Das einzige, was noch fehlt, ist die Initialisierung der Event-Handler und der erste Aufruf von `refreshMemoList()`.
 
 ~~~~~~~
 window.onload = function () {
@@ -484,35 +494,34 @@ window.onload = function () {
 };
 ~~~~~~~
 
-Now all files are ready and we can begin trying our application on the simulator.
+Jetzt sind alle Dateien bereit und wir können anfangen, unsere Anwendung im Simulator zu testen.
 
-## Testing the app on the simulator
+## Die App im Simulator testen
 
-Before we try our application on the simulator we'd better check out if the files are in the correct place. Your memos folder should look like this one:
+Bevor wir unsere App im Simulator ausprobieren, prüfen wir lieber, ob alle Dateien am richtigen Platz liegen. Dein Memos-Ordner sollte so aussehen:
 
-![List of files used by Memos](images/originals/memos-file-list.png)
+![Liste aller von Memos genutzten Dateien](images/originals/memos-file-list.png)
 
-If you have a hunch that you wrote something wrong, just compare your version with the one on [the memos github repository](https://github.com/soapdog/memos-for-firefoxos) (There is also a copy of the source code in a folder called **code** on the [book repository](https://github.com/soapdog/guia-rapido-firefox-os) ).
+Wenn du den Eindruck haben solltest, dass etwas schief gelaufen ist, vergleich deine Version einfach mit der im [Memos GitHub-Repository](https://github.com/soapdog/memos-for-firefoxos) (Es gibt auch eine Kopie des Quellcodes im Ordner **code** im [Buch-Repository](https://github.com/soapdog/guia-rapido-firefox-os)).
 
-To open the *Simulator Dashboard* go to the menu for **Tools -> Web Developer -> Firefox OS Simulator**.
+Um den *Simulator* aufzurufen, gehe im Menü von **Tools -> Web Entwickler -> Firefox OS Simulator**.
 
-![How to open simulator dashboard](images/originals/tools-web-developer-simulator.png)
+![Wie der Simulator aufgerufen wird](images/originals/tools-web-developer-simulator.png)
 
-With the dashboard open, click the **Add Directory** button and browse to where you placed the memos files and select the app manifest.
+Sowie der Simulator gestartet ist, klicke auf den **Add Directory**-Knopf und navigiere zu dem Ort, an dem die Memos-Dateien liegen und wähle das App-Manifest aus.
 
-![Adding a new app](images/originals/simulator-add-directory.png)
+![Eine neue App hinzufügen](images/originals/simulator-add-directory.png)
 
-If everything works as expected you will see the Memos app on the list of apps.
+Wenn alles wie geplant abläuft, wirst du deine Memos App in der Liste der Apps sehen.
 
-![Memos showing on the dashboard](images/originals/memos-on-dashboard-display.png)
+![Memos in der Simulator App-Liste](images/originals/memos-on-dashboard-display.png)
 
-When you add a new application, the simulator will launch with your new app running - allowing you to test it. Now you can test all the features for Memos. 
+Sobald du eine neue Anwendung hinzufügst, wird der Simulator diese starten - mit der Möglichkeit zum Testen. Jetzt kannst du alle Funktionen von Memos ausprobieren.
 
-Congratulations! You created and tested your first app. It's not a complex or revolutionary app - but I hope it helped you understand the development workflow of Firefox OS. As you can see, it's not very different from standard Web development.  
+Glückwunsch! Du hast deine erste App geschrieben und getestet. Es ist keine komplizierte oder revolution#re App - aber ich hoffe, es half dir den Entwicklungs-Prozess von Firefox OS zu verstehen. Wie du sehen kannst, ist es nicht so verschieden von der Standard-Webentwicklung.
 
-Remember that whenever you alter some of the source files you need to press the **Refresh** button to update the copy of the app that is stored on the simulator.
+Bedenke, dass du jedes Mal auf den **Refresh**-Knopf drücken musst, wenn du etwas am Quellcode änderst, um die Kopie der App im Simulator zu aktualisieren.
 
-## Summary
+## Zusammenfassung
 
-In this chapter we built our first application for Firefox OS and saw it running on the simulator. In the next chapter we're going to check out the developer tools that comes bundled with Firefox, they will make your life a lot easier when developing applications.
-
+In diesem Kapitel haben wir unsere erste Anwendung für Firefox OS geschrieben und sahen sie im Simulator laufen. Im nächsten Kapitel probieren wir die Entwickler-Werkzeuge aus, die zusammen mit Firefox ausgeliefert werden. Sie werden dein Leben um einiges erleichtern, wenn du Anwendungen entwickelst.
