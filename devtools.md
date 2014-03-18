@@ -1,24 +1,16 @@
 # Entwickler-Werkzeuge {#developertools}
 
-__ FIXME: deutscher Link? __
+Firefox bringt eine Menge Werkzeuge mit, die Web-Entwickler in ihrer Arbeit unterstützen. Viele Menschen nutzen immer noch [FireBug](https://addons.mozilla.org/de/firefox/addon/firebug/) und haben immer noch nicht realisiert, dass Firefox mit eingebauten Werkzeugen daherkommt. In diesem Kapitel werden wir diejenigen begutachten, die am nützlichsten zum Entwickeln von Firefox OS-Apps sind.
 
-Firefox bringt eine Menge Werkzeuge mit, die Web-Entwickler in ihrer Arbeit unterstützen. Viele Menschen nutzen immer noch [FireBug](https://addons.mozilla.org/pt-BR/firefox/addon/firebug/) und haben immer noch nicht realisiert, dass Firefox mit eingebauten Werkzeugen daherkommt. In diesem Kapitel werden wir diejenigen begutachten, die am nützlichsten zum Entwickeln von Firefox OS-Apps sind.
-
-__ FIXME: Deutscher Link? __
-
-Wenn du mehr über diese und andere Werkzeuge lernen möchtest, die in Firefox ankommen sollen, lies die [Entwickler-Werkzeuge](https://developer.mozilla.org/en-US/docs/Tools)-Seite im Mozilla Developer Network (du solltest es wirklich lesen! Ich werde warten).
+Wenn du mehr über diese und andere Werkzeuge lernen möchtest, die in Firefox ankommen sollen, lies die [Entwickler-Werkzeuge](https://developer.mozilla.org/de/docs/Tools)-Seite im Mozilla Developer Network (du solltest es wirklich lesen! Ich werde warten).
  
 ## Bildschrimgröße testen
-
-__ FIXME: permits auf deutsch übersetzen __
 
 Ein üblicher Workflow in der Web-Entwicklung ist das Ändern einer HTML-Datei und dann das Neuladen dieser im Browser, um zu sehen, was sich geändert hat. Wenn du nicht gerade Grunt oder Volo benutzt, wird es keinen Bedarf für einen Kompilierungs-Schritt oder dergleichen geben. Selbst der Firefox OS Simulator erlaubt dir den selben Workflow, auch wenn der Emulator derzeit auf eine Auflösung (480x320) beschränkt ist. Dies ist weniger ideal, wenn du deine App auch zum Arbeiten auf Tablets, Phablets und riesige TV-Bildschirme oder irgendwas dazwischen entwirfst.
 
 Um zu überprüfen, wie deine App auf einer beliebigen Auflösung aussiehst, kannst du die **Bildschrimgröße testen** von Firefox benutzen, um den Bildschirm (und Viewport) zu ändern. Es kann im **Werkzeug-Menü -> Web-Entwickler -> Bildschirmgröße testen** eingeschaltet werden, wie man im Bild unten sehen kann. Sowie du dieses Werkzeug aktivierst, wird sich das Fenster verändern, so dass du die Viewport-Größe aus der Auswahlliste wählen oder mit den Anfassern anpassen.
 
 ![Bildschirmgröße testen](images/originals/responsive-design-view.png)
-
-__FIXME: Link auf Deutsch?__
 
 Die Bildschirmgröße zu testen wird gerade dann nützlich, wenn [**media queries**](https://developer.mozilla.org/en-US/docs/Web/Guide/CSS/Media_queries) getestet werden sollen, da sie ein Ändern der Bildschirmgröße erlaubt und das Ändern des Layouts in Echtzeit betrachtet werden kann. Eine weitere tolle Funktion beim Testen der Bildschirmgröße liegt darin, vordefinierte Größe zu speichern. Wenn du die Größe des Viewports vom Zielgerät kennst, kannst du verschiedene Viewport-Größen schnell überprüfen, ohne das Browserfenster an sich ändern zu müssen.
 
@@ -32,8 +24,6 @@ Zusammengefasst erlaubt uns das Testen der Bildschirmgröße unsere Webanwendung
 
 ## Entwickler-Werkzeuge
 
-__FIXME: Link auf deutsch?__
-
 Die Entwickler-Werkzeuge von Firefox sind vergleichbar mit FireBug und denen von anderen modernen Browsern. Mit diesen kannst du dein JavaScript mit [der Konsole](https://developer.mozilla.org/en-US/docs/Web/API/console) ausführen und debuggen, sowie sowohl den DOM als auch das CSS auf der aktuellen Seite manipulieren.
 
 Um die Konsole zu starten, hast du zwei Möglichkeiten:
@@ -43,9 +33,7 @@ Um die Konsole zu starten, hast du zwei Möglichkeiten:
 
 ![JavaScript Console](images/originals/console-open.png) 
 
-__ FIXME: Link auf Deutsch __
-
-Neben der *JavaScript-Konsole* gibt es noch viele weitere Werkzeuge wie [*den Stil-Editor*](https://developer.mozilla.org/en-US/docs/Tools/Style_Editor), [*den Netzwerk-Monitor*](https://developer.mozilla.org/en-US/docs/Tools/Network_Monitor), [*den JavaScript-Profiler*](https://developer.mozilla.org/en-US/docs/Tools/Profiler), [*den JavaScript-Debugger*](https://developer.mozilla.org/en-US/docs/Tools/Debugger), [*den Seiten-Inspektor*](https://developer.mozilla.org/en-US/docs/Tools/Page_Inspector) und viele weitere.
+Neben der *JavaScript-Konsole* gibt es noch viele weitere Werkzeuge wie [*den Stil-Editor*](https://developer.mozilla.org/en-US/docs/Tools/Style_Editor), [*den Netzwerk-Monitor*](https://developer.mozilla.org/en-US/docs/Tools/Network_Monitor), [*den JavaScript-Profiler*](https://developer.mozilla.org/en-US/docs/Tools/Profiler), [*den JavaScript-Debugger*](https://developer.mozilla.org/en-US/docs/Tools/Debugger), [*den Seiten-Inspektor*](https://developer.mozilla.org/de/docs/Tools/Seiten_Inspektor) und viele weitere.
 
 In der Anwendung aus dem vorigen Kapitel haben wir die Konsole benutzt, um den Fortschritt des Programms zu überprüfen. Dies ist eine ziemlich mächtige Methode, um unsere Apps zu debuggen - aber einige Entwickler benutzen immer noch `alert()` für all ihren JavaScript-Code als "Debug-Werkzeug".
 
@@ -53,9 +41,7 @@ Das Benutzen von `alert()` ist eine ziemlich schlechte Idee, denn wenn du auch n
 
 Das korrekte Benutzen der Entwickler-Werkzeuge im Firefox (oder welchen Browser du auch immer benutzt) ist ein wichtiger Schritt, um ein besserer Programmierer zu werden. Darum empfehle ich jeden, den obigen Links zu folgen, um mehr mit den verfügbaren Werkzeugen im Firefox vertraut zu werden.
 
-__ FIXME: Link auf Deutsch __
-
-Ein besonderes Werkzeug, auf dass ich oben nicht eingegangen bin, ist der [*Remote-Debugger*](https://developer.mozilla.org/en-US/docs/Tools/Remote_Debugging). Dieser erlaubt es, ein Android- oder FirefoxOS-Gerät mit dem Rechner zu verbinden und die Entwickler-Werkzeuge zu benutzen, um Code in Echtzeit auf dem Gerät zu debuggen.
+Ein besonderes Werkzeug, auf dass ich oben nicht eingegangen bin, ist der [*Remote-Debugger*](https://developer.mozilla.org/de/docs/Tools/Remote_Debugging). Dieser erlaubt es, ein Android- oder FirefoxOS-Gerät mit dem Rechner zu verbinden und die Entwickler-Werkzeuge zu benutzen, um Code in Echtzeit auf dem Gerät zu debuggen.
 
 ## Zusammenfassung 
 

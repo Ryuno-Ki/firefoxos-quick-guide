@@ -4,15 +4,11 @@
 
 Der [Firefox Marketplace](http://marketplace.firefox.com) ist ein Online-Shop, bei dem du Anwendungen für Firefox OS, Firefox und Firefox für Android kaufen oder herunterladen kannst. Es ist der Hauptkanal für das Vertreiben von Firefox OS-Anwendungen, auch wenn du nicht auf ihn beschränkt bleiben musst. Wenn du Dinge außerhalb des Marketplace vertreiben willst, lies bitte das [vorige Kapitel](#distribution).
 
-__ FIXME: Sign Up übersetzen __
-
-Um deine App auf den Marketplace zu bringen, musst du dich via [Mozilla Persona](https://login.persona.org/about) identifizieren. Klick einfach auf **Registrieren** und folge den Anweisungen. Nachdem du identifiziert worden bist, kannst du apps zum Firefox Marketplace senden.
+Um deine App auf den Marketplace zu bringen, musst du dich via [Mozilla Persona](https://login.persona.org/about) identifizieren. Klick einfach auf **Anmelden** und folge den Anweisungen. Nachdem du identifiziert worden bist, kannst du apps zum Firefox Marketplace senden.
 
 ## Checkliste im Vorfeld des Einsendens einer App beim Marketplace
 
-__ FIXME: sensitive übersetzen, deutscher Link? __
-
-Alle Anwendungen, die beim Marketplace eingesendet werden, durchlaufen einen Zulassungprozess (das klingt schlimmer als es ist!). Hosted Apps haben dabei einen abgespeckteren Prozess als privilegierte, denn sie sind benutzen weniger sensitive APIs. Bevor du deine Anwendung beim Marketplace einsendest, prüfe [die Marketplace Prüfkriterien](https://developer.mozilla.org/en-US/docs/Web/Apps/Publishing/Marketplace_review_criteria). Die wichtigsten Aspekte sind meiner Meinung nach:
+Alle Anwendungen, die beim Marketplace eingesendet werden, durchlaufen einen Zulassungprozess (das klingt schlimmer als es ist!). Hosted Apps haben dabei einen abgespeckteren Prozess als privilegierte, denn sie sind benutzen weniger heikle APIs. Bevor du deine Anwendung beim Marketplace einsendest, prüfe [die Marketplace Prüfkriterien](https://developer.mozilla.org/en-US/docs/Web/Apps/Publishing/Marketplace_review_criteria). Die wichtigsten Aspekte sind meiner Meinung nach:
 
 * Firefox OS-Geräte haben keinen **Zurück-Knopf** wie Android oder dein Desktop-Browser. Wenn der Benutzer zu einem Bildschirm innerhalb deiner Anwendung navigiert, von dem es keinen zurück gibt (bspw. weil er in eine Sackgasse gerät), wird deine App abgelehnt.
 * Deine App sollte ein 60x60 Icon und eine klare Beschreibung haben.
@@ -35,18 +31,14 @@ Diese Zip-Datei ist das, was wir beim Marketplace einreichen.
 
 ## Eine App beim Marketplace einreichen
 
-__ FIXME: My Submission übersetzen __
-
 Jetzt, nachdem deine Anwendung bereit ist und wir getrost wissen, dass es die Prüfkriterien erfüllt, wird es Zeit, dass wir sie beim Marketplace einreichen. Dazu navigiere zu **Meine Einsendungen**, indem du den Zahnrad-Knopf oben auf der Marketplace-Seite benutzt.
 
 
 ![Meine Einsendungen](images/originals/marketplace-my-submissions.png)
 
-__ FIXME: Submit An App übersetzen __
+Innerhalb der Anwendungen-Verwaltungsseite musst du **Eine App einreichen** aus dem Menü oben anklicken.
 
-Innerhalb der Anwendungen-Verwaltungsseite musst du **Eine App einsenden** aus dem Menü oben anklicken.
-
-![Eine App einsenden](images/originals/marketplace-new-app.png)
+![Eine App einreichen](images/originals/marketplace-new-app.png)
 
 Dieser Link führt dich zu einem Formular zum Einsenden neuer Apps wie unten auf dem Bildschirmphoto dargestellt.
 
@@ -74,13 +66,9 @@ Der nächste Schritt wird **Schritt #3: Details** genannt und beinhaltet die Inf
 
 Nachdem die Details ausgefüllt wurden, ist der Einreichungsprozess abgeschlossen. Jetzt musst du nur noch auf die Zustimmung der Marketplace-Reviewer warten. Glückwunsch, du hast eine Firefox OS-Anwendung verteilt!!!
 
-__ FIXME: Application Management page übersetzen __
-
 Auf der [Anwendungs-Verwaltungsseite](https://marketplace.firefox.com/developers/submissions) kannst du den Status der Einreichung einsehen und bei Bedarf Details abändern.
 
-__ FIXME: Firefox OS developer hub übersetzen __
-
-Um mehr über das Einreichen von Anwendungen beim Firefox Marketplace zu erfahren, lies [diesen Artikel im Firefox OS Entwickler-Zentrum](https://marketplace.firefox.com/developers/docs/submission).
+Um mehr über das Einreichen von Anwendungen beim Firefox Marketplace zu erfahren, lies [diesen Artikel im Firefox OS Entwicklerzentrum](https://marketplace.firefox.com/developers/docs/submission).
 
 ## Zusammenfassung
 
@@ -90,7 +78,5 @@ Ich hoffe, dir hat dieser Schnellkurs gefallen. Ich plane, ihn oft zu aktualisie
 
 Bitte gib mir Feedback. Dieses Buch wurde in Nachtschichten vor einer Tech-Konferenz geschrieben und man sieht es, wie sehr ich dieses Projekt liebe und seinen Erfolg sehen möchte. Mich kann man für Feedback über meinen Twitter-Account [@soapdog](http://twitter.com/soapdog) und per E-Mail [fxosquickguide@andregarzia.com](mailto:fxosquickguide@andregarzia.com) erreichen. Meine Homepage ist [http://andregarzia.com](http://andregarzia.com).
 
-__ FIXME: Deutscher Link? __
-
-Jetzt nachdem du Teil der Firefox OS-Appentwickler geworden bist, werd Teil der eben tolleren Mozilla-Community: Hilf, das Internet offen, frei und von Nutzern für Nutzern zu halten. Tritt uns bei auf [http://www.mozilla.org/contribute/](http://www.mozilla.org/en-US/contribute/) und hilf Firefox OS wachsen!
+Jetzt nachdem du Teil der Firefox OS-Appentwickler geworden bist, werd Teil der eben tolleren Mozilla-Community: Hilf, das Internet offen, frei und von Nutzern für Nutzern zu halten. Tritt uns bei auf [https://www.mozilla.org/contribute/](https://www.mozilla.org/de/contribute/) und hilf Firefox OS wachsen!
 

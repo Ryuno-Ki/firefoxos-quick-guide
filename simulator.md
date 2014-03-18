@@ -4,8 +4,6 @@
 
 Wir haben den Firefox OS Simulator im [Kapitel über das Vorbereitung der Umgebung]{#setup} installiert und wir benutzten ihn im [Kapitel über das Entwickeln unserer ersten App]{#firstapp}. Jetzt werfen wir einen tieferen Blick in die Funktionen des Simulators und lernen, wie übliche Aufgaben erledigt werden.
 
-__ FIXME: Deutscher Link __
-
 Um mehr darüber zu lernen, lies [die Firefox OS Simulator Dokumentation](https://developer.mozilla.org/en-US/docs/Tools/Firefox_OS_Simulator) im MDN.
 
 ## Apps hinzufügen
@@ -50,9 +48,7 @@ Nachdem du den Knopf gedrückt hast, sieht dein Bildschirm in etwa so aus:
 
 ![Entwickler-Werkzeuge, die mit einer im Simulator laufenden App verbunden wurden](images/originals/simulator-connected.png)
 
-__ FIXME: Pivot auf deutsch __
-
-Nachdem die Werkzeuge mit deiner App verbunden wurden, kannst du dein JavaScript testen, deinen DOM debuggen, Stylesheets bearbeiten usw. Wie diese Startup-Typen so schön zu sagen pflegen: *Pivotiere, bis deine App gut ist*.
+Nachdem die Werkzeuge mit deiner App verbunden wurden, kannst du dein JavaScript testen, deinen DOM debuggen, Stylesheets bearbeiten usw. Wie diese Startup-Typen so schön zu sagen pflegen: *Variiere, bis deine App gut ist*.
 
 Nachdem deine App also im Simulator gut läuft, wird es Zeit, sie auf einem realen Gerät zu testen.
 

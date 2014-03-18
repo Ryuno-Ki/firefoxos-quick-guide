@@ -14,9 +14,7 @@ In der obigen Ansicht kann der Benutzer eine bestimmte Notiz löschen, indem er 
 
 Der Quellcode von Memos ist im [Memos GitHub-Repo](https://github.com/soapdog/memos-for-firefoxos) verfügbar (ebenfalls als [.zip](https://github.com/soapdog/memos-for-firefoxos/archive/master.zip)-Archiv). Ich empfehle dir, die Dateien herunterzuladen, so dass du den Vorgang leichter mitverfolgen kannst. Eine weitere Kopie des Quellcodes findet sich im **code**-Ordner innerhalb des [GitHub-Repositorys für dieses Buch](https://github.com/soapdog/firefoxos-quick-guide).
 
-__ FIXME: Deutscher Link __
-
-Memos benutzt [IndexedDB](https://developer.mozilla.org/en-US/docs/IndexedDB/Using_IndexedDB), um die Notizen zu speichern und die [Gaia Building Blocks](http://buildingfirefoxos.com/building-blocks), um die Oberfläche aufzubauen. In einer späteren Ausgabe dieses Buches werde ich mehr über die Building Blocks sprechen, aber für den Augenblick benutze ich sie einfach. Du kannst die obigen Links benutzen, um mehr über sie zu erfahren und welche Oberflächen-Werkzeuge sie bereitstellen.
+Memos benutzt [IndexedDB](https://developer.mozilla.org/de/docs/IndexedDB/IndexedDB_verwenden), um die Notizen zu speichern und die [Gaia Building Blocks](http://buildingfirefoxos.com/building-blocks), um die Oberfläche aufzubauen. In einer späteren Ausgabe dieses Buches werde ich mehr über die Building Blocks sprechen, aber für den Augenblick benutze ich sie einfach. Du kannst die obigen Links benutzen, um mehr über sie zu erfahren und welche Oberflächen-Werkzeuge sie bereitstellen.
 
 Der erste Schritt besteht darin, einen Ordner für die Anwendung zu erstellen; nennen wir ihn **memos**:
 
@@ -30,20 +28,16 @@ Unten sehen wir den Inhalt der Memos Manifest-Datei. Pass auf, wenn du diese Dat
 
 Lass uns einmal die einzelnen Felder davon durchgehen.
 
-__ FIXME: Better solution for this! __
-
-|Field		|Description                                                                        |
+|Feld		|Beschreibun|
 |-----------|-----------------------------------------------------------------------------------|
-|name		|This is the name of the application.		                                                |
-|version	|This is the current version of the app. 										    |
-|launch_path|What file is used to launch your application.					                    |
-|permissions|What API permissions your app requests. More information about this below.				|
-|developer  |Who developed this application 													|
-|icons		|The icons used by the app in many different sizes.									|
+|name		|Dies ist der Name der Anwendung.		                                                |
+|version	|Dies ist die aktuelle Version der App. 										    |
+|launch_path|Die beim Start zu benutzende Datei.					                    |
+|permissions|Welche API-Berechtigungen deine App anfordert. Mehr dazu weiter unten.				|
+|developer  |Der Entwickler dieser Anwendung 													|
+|icons		|Die von der App benutzten Icons in verschiedenen Größen.									|
 
 Der interessanteste Teil dieses Manifests ist das Berechtigungsfeld, wo wir um die *storage*-Berechtigung bitten, die uns die Benutzung von IndexedDB ohne Einschränkungen[^storage-permission] erlaubt (dank dieser Berechtigung können wir dann also so viele Notizen speichern, wie wir wollen - auch wenn wir darauf bedacht sein sollten, nicht zu viel Speicher zu belegen!).
-
-__ FIXME: Deutscher Link? __
 
 [^storage-permission]: Um mehr über Berechtigungen zu erfahren lies [die Seite auf MDN über App-Berechtigunge(https://developer.mozilla.org/en-US/docs/Web/Apps/App_permissions).
 
@@ -186,15 +180,11 @@ Beide Dateien sollten innerhalb eines **js**-Ordners gespeichert werden, der auf
 
 ### model.js
 
-__ FIXME: Deutscher Link? __
-
-Wir werden [IndexedDB](https://developer.mozilla.org/en-US/docs/IndexedDB/Using_IndexedDB) benutzen, um unsere Notizen zu speichern. Da wir nach der *storage*-Berechtigung gefragt haben, können wir so viele Notizen speichern, wie wir wollen - wir sollten dies allerdings nicht missbrauchen! Firefox OS-Geräte haben im Allgemeinen sehr wenig Speicher zur Verfügung, so dass du dir immer Gedanken darüber machen solltest, welche Daten du speichern willst (die Benutzer werden deine App entfernen und eine schlechte Bewertung abgeben, wenn sie zu viel Speicherplatz benötigt!). Daneben wird das Speichern von sehr großen Datenmengen eine Performance-Einbuße nach sich ziehen, die dazu führt, dass sich die App träge anfühlt. Bedenke also auch bitte, dass dich die Reviewer fragen werden, warum du unbegrenzten Speicherplatz benötigst, sowie du deine Anwendung im Firefox Marketplace einreichst - wenn du es also nicht begründen kannst, wird die Anwendung zurückgewiesen werden.
+Wir werden [IndexedDB](https://developer.mozilla.org/de/docs/IndexedDB/IndexedDB_verwenden) benutzen, um unsere Notizen zu speichern. Da wir nach der *storage*-Berechtigung gefragt haben, können wir so viele Notizen speichern, wie wir wollen - wir sollten dies allerdings nicht missbrauchen! Firefox OS-Geräte haben im Allgemeinen sehr wenig Speicher zur Verfügung, so dass du dir immer Gedanken darüber machen solltest, welche Daten du speichern willst (die Benutzer werden deine App entfernen und eine schlechte Bewertung abgeben, wenn sie zu viel Speicherplatz benötigt!). Daneben wird das Speichern von sehr großen Datenmengen eine Performance-Einbuße nach sich ziehen, die dazu führt, dass sich die App träge anfühlt. Bedenke also auch bitte, dass dich die Reviewer fragen werden, warum du unbegrenzten Speicherplatz benötigst, sowie du deine Anwendung im Firefox Marketplace einreichst - wenn du es also nicht begründen kannst, wird die Anwendung zurückgewiesen werden.
 
 Der Code-Abschnitt unten aus *model.js* ist dafür verantwortlich, die Verbindung aufzubauen und den Speicher anzulegen.
 
-__ FIXME: Tidbits auf deutsch __
-
-A> Wichtig: Dieser Code wurde so geschrieben, dass er leicht verständlich ist. Von daher spiegelt er nicht die Best Practices in JavaScript-Programmierung wider. Es werden einige globale Variablen benutzt (für die ich eines Tages in der Hölle landen werde), sowie einige weitere TIDBITS. Die Fehlerbehandlung ist gewissermaßen nicht vorhanden. Das Hauptanliegen dieses Buches liegt darin, den *Workflow* der App-Entwicklung für Firefox OS beizugringen und nicht die besten JavaScript-Entwurfsmuster zu vermitteln. Nachdem wir das also geklärt hätten, werde ich den Quellcode gemäß den Best Practices überarbeiten, wenn genügend Leute denken, dass es nicht Anfänger abschrecken wird.
+A> Wichtig: Dieser Code wurde so geschrieben, dass er leicht verständlich ist. Von daher spiegelt er nicht die Best Practices in JavaScript-Programmierung wider. Es werden einige globale Variablen benutzt (für die ich eines Tages in der Hölle landen werde), sowie einige weitere Leckerbissen. Die Fehlerbehandlung ist gewissermaßen nicht vorhanden. Das Hauptanliegen dieses Buches liegt darin, den *Workflow* der App-Entwicklung für Firefox OS beizugringen und nicht die besten JavaScript-Entwurfsmuster zu vermitteln. Nachdem wir das also geklärt hätten, werde ich den Quellcode gemäß den Best Practices überarbeiten, wenn genügend Leute denken, dass es nicht Anfänger abschrecken wird.
 
 ~~~~~~~
 var dbName = "memos";

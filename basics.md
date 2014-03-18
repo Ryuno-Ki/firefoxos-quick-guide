@@ -33,11 +33,8 @@ Firefox OS hat derzeit zwei Typen von Anwendungen: Hosted Apps und Packaged Apps
 
 * **Hosted Apps:** Werden auf einem Webserver wie normale Websites gehosted. Das bedeutet, wenn der Nutzer eine Hosted App startet, wird ihr Inhalt von einem entfernten Server (oder aus dem Cache, sofern verfügbar) geladen.
 * **Packaged Apps:** Werden als Zip-Datei verteilt und auf das Gerät bei der Installation kopiert. Sobald ein Nutzer eine Packaged App startet, wird ihr Inhalt aus der Zip-Datei geladen statt von einem entfernten Server.
-## Types of Application
 
-__ FIXME: Deutscher AppCache Link, despise übersetzen __
-
-Beide Typen haben ihre Vor- und Nachteile. Auf der einen Seite sind Hosted Apps leichter zu warten, denn du musst nur Dateien auf deinem Webserver warten. Andererseits wird es schwieriger, sie offline arbeitsfähig zu machen, denn das benötigt den Einsatz des berüchtigten AppCaches. Hosted Apps sind also beschränkt, was die WebAPIs angeht und können deswegen nicht alles, was eine Packaged App tun kann.
+Beide Typen haben ihre Vor- und Nachteile. Auf der einen Seite sind Hosted Apps leichter zu warten, denn du musst nur Dateien auf deinem Webserver warten. Andererseits wird es schwieriger, sie offline arbeitsfähig zu machen, denn das benötigt den Einsatz des verachteten [AppCaches](https://developer.mozilla.org/en-US/docs/HTML/Using_the_application_cache). Hosted Apps sind also beschränkt, was die WebAPIs angeht und können deswegen nicht alles, was eine Packaged App tun kann.
 
 Andererseits haben Packaged Apps all ihren Inhalt im Speicher des Geräts - was bedeutet, dass sie immer erreichbar sind, auch wenn der Benutzer offline ist (und damit AppCache nicht benötigen). Sie können außerdem Zugriff auf sicherheitsrelevante WebAPIs bekommen, die Hosted Apps verwehrt bleiben. Eine Packaged App zu aktualisieren kann andererseits schmerzvoll werden, denn du musst eine neue Version im Firefox Marketplace einreichen - und damit noch einmal durch den Review-Prozess, was einige Zeit in Anspruch nehmen kann.
 
@@ -45,9 +42,7 @@ Wenn du dich für einen Typ von Anwendungen entscheiden willst, beachte: Wenn du
 
 Oben erwähnte ich AppCache, welches problematisch werden kann (und trotzdem für Hosted Apps benötigt wird). Mach dir nicht zu viel Gedanken, denn es gibt Werkzeuge, die das Erstellen und Verteilen von AppCache erleichtern [^js-tools].
 
-__ FIXME: developer hub übersetzen __
-
-In diesem Buch werden wir zusammen eine Packaged App erstellen und dabei erkunden, was man mit WebAPIs alles anstellen kann. Das meiste, was wir über Manifest-Dateien lernen werden, trifft jedenfalls auf Hosted Apps zu. Wenn du mehr zum Vertreiben von Hosted Apps lernen willst, lies [den Hosted App-Link auf dem Entwickler Hub](https://marketplace.firefox.com/developers/docs/hosted).
+In diesem Buch werden wir zusammen eine Packaged App erstellen und dabei erkunden, was man mit WebAPIs alles anstellen kann. Das meiste, was wir über Manifest-Dateien lernen werden, trifft jedenfalls auf Hosted Apps zu. Wenn du mehr zum Vertreiben von Hosted Apps lernen willst, lies [den Hosted App-Link auf dem Entwickler Netzwerk](https://marketplace.firefox.com/developers/docs/hosted).
 
 [^js-tools]: Es gibt jede Menge nützlicher Werkzeuge, sieh dir [Grunt](gruntjs.com), [Volo](http://volojs.org/), [Yeoman](http://yeoman.io/) und [Bower](http://bower.io/) an. Es gibt eine Menge Gemeinsamkeiten zwischen diesen Werkzeugen, so dass es eher eine Sache der persönlichen Vorliebe ist, welche du benutzt. (Ich mag Volo mehr als Grunt, in erster Linie, weil Volo-Dateien leichter für mich zu lesen sind).
 
@@ -57,17 +52,13 @@ Nachdem wir jetzt die beiden von Firefox OS unterstützten Anwendungstypen kenne
 
 Es gibt drei Sicherheitslevel für Firefox OS - wobei jeder Level mehr Zugriff auf APIs gewährt bekommt als der vorige.
 
-__ FIXME: Dialer auf deutsch übersetzen __
-
 * **Einfach (auch bekannt als: Web):** Dies ist der Standard-Level für alle Anwendungen. Es trifft auf Hosted Apps und Packaged Apps zu, die nicht eine `type`-Eigenschaft in ihrer Manifest-Datei haben. Diese Apps haben Zugriff auf die übliche Menge an APIs von Browsern - aber sie haben keinen Zugriff auf Mozillas WebAPIs.
 * **Privilegiert:** Dieser Typ Apps hat Zugriff auf alle üblichen APIs vom Firefox Browser, sowie einigen weiteren wie Kontakte und Systemalarm. Nur **Packaged Apps können priveligierte Apps** werden und das Paket muss digital im Firefox OS Marketplace signiert worden sein.
-* **Zertifiziert:** Aus Sicherheitsgründen ist dieses Level nur für Mozilla und seine Partner (z.B. Smartphone-Hersteller, Telekommunikations-Unternehmen usw.) verfügbar. Zertifizierte Apps haben Zugriff auf alle APIs wie Telefonie und mehr. Ein Beispiel einer zertifizierten App ist die Firefox OS Anruf-Anwendung.
+* **Zertifiziert:** Aus Sicherheitsgründen ist dieses Level nur für Mozilla und seine Partner (z.B. Smartphone-Hersteller, Telekommunikations-Unternehmen usw.) verfügbar. Zertifizierte Apps haben Zugriff auf alle APIs wie Telefonie und mehr. Ein Beispiel einer zertifizierten App ist das Firefox OS Rufnummern-Wählprogramm.
 
 Während der Entwicklung ist es für uns möglich, auf privilegierte APIs ohne besondere Zustimmung von Mozilla zuzugreifen. Aber sobald wir eine privilegierte App vertreiben wollen, müssen wir sie zunächst im Firefox Marketplace einreichen. Dort wird der Code als Teil eines strengen Zulassungssprozesses überprüft und wenn es für gut befunden wird, wird es digital signiert - was dem Benutzer mitteilt, dass diese App berechtigt ist, auf sensible APIs zuzugreifen.
 
-__ FIXME: deutsche Seite __
-
-Auf [der Seite über WebAPIs in Mozillas Entwickler-Netzwerk](https://developer.mozilla.org/en-US/docs/WebAPI) können wir sehen, welche APIs auf welcher Plattform implementiert wurden und welcher Zugriffslevel für welche API benötigt wird.
+Auf [der Seite über WebAPIs in Mozillas Entwickler-Netzwerk](https://developer.mozilla.org/de/docs/Web/WebAPI) können wir sehen, welche APIs auf welcher Plattform implementiert wurden und welcher Zugriffslevel für welche API benötigt wird.
 
 ![Zugriffslevel für die APIs](images/originals/webapi-access.png)
 
@@ -81,13 +72,9 @@ Lass uns einige Code-Beispiele näher betrachten, um zu sehen, wie einfach diese
 
 ### Beispiel #1: Aufrufe tätigen
 
-__ FIXME: Dialer auf deutsch übersetzen __
-
 Stell dir vor, deine Anwendung muss die Rufnummer mit einer vorgewählten öffnen. Du kannst einfach den folgenden Code benutzen:
 
-__ FIXME: Dialer auf deutsch übersetzen __
-
-<<[Eine Nummer an die Rufwahl-Anwendung senden](code/webapi_samples/dial.js)
+<<[Eine Nummer an das Rufnummern-Wahlprogramm senden](code/webapi_samples/dial.js)
 
 Dieser Code stellt eine Anforderung an die Rufnummer-App, um eine bestimmte Nummer anzurufen. Beachte, dass dies nicht zur tatsächlichen Wahl der Nummer führen - der Benutzer muss immer noch auf Abheben drücken, um die Nummer zu wählen. Eine explizite Nutzer-Aktion zu fordern, bevor irgendwelcher Code ausgeführt wird, ist ziemlich üblich: es ist ein gutes Sicherheitsmuster, denn es verlangt eine Interaktion über das Einverständnis, bevor irgendetwas zu passieren erlaubt wird. Andere APIs zur Rufnummernwahl ohne Interaktion sind für höhere Zugriffslevel verfügbar. Zertifizierte Apps können beispielsweise Rufnummern ohne irgendeine Interaktion wählen. Die im obigen Code benutzte API wird "Web Activities" genannt und ist für alle Apps verfügbar.
 
@@ -105,15 +92,11 @@ Um mehr über diese API zu erfahren, lies [die Seite über *Contacts API* im Moz
 
 ### Beispiel #3: Ein Bild von der Kamera wählen
 
-__ FIXME: fancy auf deutsch übersetzen __
-
-Stell dir vor, du entwickelst eine Anwendung, die FANCY Filter auf Bilder anwendet. Du möchtest einen Knopf in deiner App platzieren, die es dem Benutzer erlaubt, ein Bild aus dem Foto-Album oder von der Kamera auszuwählen.
+Stell dir vor, du entwickelst eine Anwendung, die extravagante Filter auf Bilder anwendet. Du möchtest einen Knopf in deiner App platzieren, die es dem Benutzer erlaubt, ein Bild aus dem Foto-Album oder von der Kamera auszuwählen.
 
 <<[Ein Bild auswählen](code/webapi_samples/pick.js)
 
-__ FIXME: Überlegen, ob success und error callbacks übersetzt werden sollen __
-
-Hier haben wir ein anderes Beispiel einer [WebActivity](https://hacks.mozilla.org/2013/01/introducing-web-activities/). Diese Aktivitäten sind für alle Anwendungen verfügbar. In diesem speziellen Fall benutzen wir die *pick* activity und übergeben ihr *MIME-Typen* von Dateien, die wir erhalten wollen. Wenn dieser Code ausgeführt wird, zeigt das System dem Nutzer einen Bildschirm, um ihn oder sie zu fragen, ein Bild von der (Kamera, Gallerie, Hintergrundbilder) auszuwählen. Wenn der Benutzer ein Bild auswählt, wird der Erfolgs-Callback getriggert. Wenn der Benutzer den Vorgang abbricht, wird der Fehler-Callback ausgeführt. In unterem Bild können wir den Dialog sehen, der den Nutzer ein Bild auswählen lässt:
+Hier haben wir ein anderes Beispiel einer [WebActivity](https://hacks.mozilla.org/2013/01/introducing-web-activities/). Diese Aktivitäten sind für alle Anwendungen verfügbar. In diesem speziellen Fall benutzen wir die *pick* activity und übergeben ihr *MIME-Typen* von Dateien, die wir erhalten wollen. Wenn dieser Code ausgeführt wird, zeigt das System dem Nutzer einen Bildschirm, um ihn oder sie zu fragen, ein Bild von der (Kamera, Gallerie, Hintergrundbilder) auszuwählen. Wenn der Benutzer ein Bild auswählt, wird der Success-Callback getriggert. Wenn der Benutzer den Vorgang abbricht, wird der Error-Callback ausgeführt. In unterem Bild können wir den Dialog sehen, der den Nutzer ein Bild auswählen lässt:
 
 ![Beispiel einer *pick activity*](images/originals/pick_image.png)
 

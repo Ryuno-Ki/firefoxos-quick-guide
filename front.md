@@ -12,9 +12,7 @@ An meinen GSoC-Mentor Marcos Caceres, dem Mozilla WebAPI-Team, den Mozilla Tech-
 
 An Google für den Google Summer of Code 2013 (GSoC)! Dieses Programm ist einfach nur wundervoll.
 
-## Dieses Buch befindet sich im forlaufenden Beta-Status
-
-__FIXME: perpetual übersetzen__
+## Dieses Buch befindet sich im fortwährendem Beta-Status
 
 Mein Plan ist es, dieses Buch oft zu aktualisieren und seine Inhalte zu erweitern, sowie neue Probleme von den Lesern aufgeworfen werden. Da einige APIs immer noch für Firefox OS implementiert werden, willst du sicher gehen, auch eine aktuelle Version dieses Buches zu lesen.
 
@@ -50,8 +48,6 @@ Die Cover-Seite wurde von Raphael Eckhardt erstellt, ein Designer und Illustrato
 
 ## Wer sollte dieses Buch lesen
 
-__FIXME: intermediate übersetzen__
-
 Dieses Buch ist für Leser mit mittleren Kenntnissen in HTML, CSS und JavaScript geschrieben, die mobile Anwendungen für Firefox OS schreiben wollen. HTML, CSS und JavaScript zu lehren, übersteigt den Rahmen dieses Buches. Ich werde dir aber Verweise auf gute Referenz-Bücher geben.
 
 ## Who should read this book
@@ -60,9 +56,7 @@ This book is written for readers with an intermediate knowledge of HTML, CSS and
 
 ## Best Practices vs. Anfänger-Freundlichkeit
 
-__ FIXME: Großgeschriebene Wörter __
-
-Erfahrene Entwickler werden bemerken, dass ich manchmal nicht alle Good Practices im Beispiel-Quellcode folgen werde. Auch wenn ich Anti-Patterns zu vermeiden versuche, bemühe ich mich, IMMERDIATE Funktionen und andere vergleichbare Praktiken auf ein Minimum zu reduzieren. Der Hauptgrund dafür liegt darin, dass dies ein Einführungsbuch ist. SEASONED Programmierer werden merken, wann und wie Dinge umgeändert werden müssen, während Anfänger-Programmierer immer noch in der Lage sein, zu verstehen, was vor sich geht. Sämtlicher Code hier funktioniert und sowie ich das Buch aktualisier, gehe ich noch einmal durch den Code und verwende mehr und mehr Best Practices in Abhängigkeit vom Feedback der Leser.
+Erfahrene Entwickler werden bemerken, dass ich manchmal nicht alle Good Practices im Beispiel-Quellcode folgen werde. Auch wenn ich Anti-Patterns zu vermeiden versuche, bemühe ich mich, sich sofort aufrufende Funktionen und andere vergleichbare Praktiken auf ein Minimum zu reduzieren. Der Hauptgrund dafür liegt darin, dass dies ein Einführungsbuch ist. Bewährte Programmierer werden merken, wann und wie Dinge umgeändert werden müssen, während Anfänger-Programmierer immer noch in der Lage sein, zu verstehen, was vor sich geht. Sämtlicher Code hier funktioniert und sowie ich das Buch aktualisier, gehe ich noch einmal durch den Code und verwende mehr und mehr Best Practices in Abhängigkeit vom Feedback der Leser.
 
 Wenn du noch tiefer in die Welt von hochqualitativem JavaScript-Programmieren eintauchen willst, gibt es hier einige gute Bücher:
 
