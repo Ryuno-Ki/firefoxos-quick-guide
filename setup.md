@@ -10,10 +10,8 @@ Browser benutzen verschiedene Engines, um Webseiten zu rendern: Google Chrome un
 
 Um Apps für Firefox OS zu entwickeln und zu testen brauchst du:
 
-__ TODO: Deutscher Link __
-
  * Eine aktuelle Version des [Firefox Browsers](http://getfirefox.com).
- * Den [Firefox OS Simulator](https://addons.mozilla.org/en-US/firefox/addon/firefox-os-simulator/). 
+ * Den [Firefox OS Simulator](https://addons.mozilla.org/de/firefox/addon/firefox-os-simulator/). 
  * Einen Text-Editor zum Programmieren[^editors].
  
 [^editors]: Es gibt viele gute Editoren mit unterschiedlichem Grad an Komplexität und Funktionen. Ein sehr beliebter, den ich für all die empfehlen kann, die keinen Lieblingseditor haben, ist [SublimeText](http://sublimetext.com/). Persönlich benutze ich [WebStorm](http://www.jetbrains.com/webstorm/), welche eine komplette IDE zur Web-App-Entwicklung darstellt.
@@ -32,9 +30,7 @@ Nach der Installation des Add-Ons kannst du den Simulator über das **Werkzeuge 
 
 ![Wo du den Simulator nach der Installation finden kannst](images/originals/tools-web-developer-simulator.png)
 
-__ TODO: Link auf deutsch __
-
-Alternativ kannst du auch auf der [Firefox OS Simulator](https://addons.mozilla.org/en-US/firefox/addon/firefox-os-simulator/)-Add-On-Seite herunterladen und von dort installieren.
+Alternativ kannst du auch auf der [Firefox OS Simulator](https://addons.mozilla.org/de/firefox/addon/firefox-os-simulator/)-Add-On-Seite herunterladen und von dort installieren.
 
 ## Zusammenfassung
 
