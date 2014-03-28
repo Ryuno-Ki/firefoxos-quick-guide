@@ -2,21 +2,21 @@
 
 Firefox bringt eine Menge Werkzeuge mit, die Web-Entwickler in ihrer Arbeit unterstützen. Viele Menschen nutzen immer noch [FireBug](https://addons.mozilla.org/de/firefox/addon/firebug/) und haben immer noch nicht realisiert, dass Firefox mit eingebauten Werkzeugen daherkommt. In diesem Kapitel werden wir diejenigen begutachten, die am nützlichsten zum Entwickeln von Firefox OS-Apps sind.
 
-Wenn du mehr über diese und andere Werkzeuge lernen möchtest, die in Firefox ankommen sollen, lies die [Entwickler-Werkzeuge](https://developer.mozilla.org/de/docs/Tools)-Seite im Mozilla Developer Network (du solltest es wirklich lesen! Ich werde warten).
+Wenn du mehr über diese und andere Werkzeuge lernen möchtest, die in Firefox ankommen sollen, lies die [Entwickler-Werkzeuge](https://developer.mozilla.org/de/docs/Tools)-Seite im Mozilla Entwickler-Netzwerk (du solltest es wirklich lesen! Ich werde warten).
  
-## Bildschrimgröße testen
+## Bildschirmgröße testen
 
 Ein üblicher Workflow in der Web-Entwicklung ist das Ändern einer HTML-Datei und dann das Neuladen dieser im Browser, um zu sehen, was sich geändert hat. Wenn du nicht gerade Grunt oder Volo benutzt, wird es keinen Bedarf für einen Kompilierungs-Schritt oder dergleichen geben. Selbst der Firefox OS Simulator erlaubt dir den selben Workflow, auch wenn der Emulator derzeit auf eine Auflösung (480x320) beschränkt ist. Dies ist weniger ideal, wenn du deine App auch zum Arbeiten auf Tablets, Phablets und riesige TV-Bildschirme oder irgendwas dazwischen entwirfst.
 
-Um zu überprüfen, wie deine App auf einer beliebigen Auflösung aussiehst, kannst du die **Bildschrimgröße testen** von Firefox benutzen, um den Bildschirm (und Viewport) zu ändern. Es kann im **Werkzeug-Menü -> Web-Entwickler -> Bildschirmgröße testen** eingeschaltet werden, wie man im Bild unten sehen kann. Sowie du dieses Werkzeug aktivierst, wird sich das Fenster verändern, so dass du die Viewport-Größe aus der Auswahlliste wählen oder mit den Anfassern anpassen.
+Um zu überprüfen, wie deine App auf einer beliebigen Auflösung aussiehst, kannst du die **Bildschirmgröße testen**-Funktion von Firefox benutzen, um den Bildschirm (und Viewport) zu ändern. Es kann im **Werkzeug-Menü -> Web-Entwickler -> Bildschirmgröße testen** eingeschaltet werden, wie man im Bild unten sehen kann. Sowie du dieses Werkzeug aktivierst, wird sich das Fenster verändern, so dass du die Viewport-Größe aus der Auswahlliste wählen oder mit den Anfassern anpassen kannst.
 
 ![Bildschirmgröße testen](images/originals/responsive-design-view.png)
 
-Die Bildschirmgröße zu testen wird gerade dann nützlich, wenn [**media queries**](https://developer.mozilla.org/en-US/docs/Web/Guide/CSS/Media_queries) getestet werden sollen, da sie ein Ändern der Bildschirmgröße erlaubt und das Ändern des Layouts in Echtzeit betrachtet werden kann. Eine weitere tolle Funktion beim Testen der Bildschirmgröße liegt darin, vordefinierte Größe zu speichern. Wenn du die Größe des Viewports vom Zielgerät kennst, kannst du verschiedene Viewport-Größen schnell überprüfen, ohne das Browserfenster an sich ändern zu müssen.
+Die Bildschirmgröße zu testen wird gerade dann nützlich, wenn [**media queries**](https://developer.mozilla.org/en-US/docs/Web/Guide/CSS/Media_queries) überprüft werden sollen, da sie ein Ändern der Bildschirmgröße erlaubt und das Ändern des Layouts in Echtzeit betrachtet werden kann. Eine weitere tolle Funktion beim Testen der Bildschirmgröße liegt darin, vordefinierte Größen zu speichern. Wenn du die Größe des Viewports vom Zielgerät kennst, kannst du verschiedene Viewport-Größen schnell überprüfen, ohne das Browserfenster an sich ändern zu müssen.
 
 ![Beispiel des Testens der Bildschirmgröße](images/originals/responsive-view-sample.png)
 
-Zum Zeipunkt des Schreibens liefen die meisten Firefox OS-Geräte auf dem Markt mit einer Auflösung von 480x320 - bei einer Pixelrate von ungefähr 96ppi. Du solltest jedenfalls erwarten, dass neuere Firefox OS-Hardware mit der Zeit sich ändern werden: Bildschirme werden voraussichtlich mehr Pixel reinpacken und eine höhere Pixeldichte aufweisen (wie Apples Retina-Displays).
+Zum Zeipunkt des Schreibens liefen die meisten Firefox OS-Geräte auf dem Markt mit einer Auflösung von 480x320 - bei einer Pixelrate von ungefähr 96ppi. Du solltest jedenfalls erwarten, dass neuere Firefox OS-Hardware sich mit der Zeit ändern werden: Bildschirme werden voraussichtlich mehr Pixel reinpacken und eine höhere Pixeldichte aufweisen (wie Apples Retina-Displays).
 
 Um deine App für die Zukunft zu rüsten, stütze dich im CSS nicht auf irgendeine Auflösung oder Pixel-Dichte. Nutze stattdessen Media Queries und die Responsive Design-Methode, um Apps zu entwickeln, die sich an eine beliebige Bildschirmgröße anpassen. Wenn du mehr darüber lernen möchtest, empfehle ich dir die Bücher [Responsive Web Design](http://www.abookapart.com/products/responsive-web-design) und [Mobile First](http://www.abookapart.com/products/mobile-first).
 
@@ -28,12 +28,12 @@ Die Entwickler-Werkzeuge von Firefox sind vergleichbar mit FireBug und denen von
 
 Um die Konsole zu starten, hast du zwei Möglichkeiten:
 
-	* Über "Werkzeuge > Web Developer > Web Console"
+  * Über "Werkzeuge > Web Developer > Web Console"
   * auf der zu debuggenden Seite rechtsklicken und "Dieses Element untersuchen" auswählen, danach auf den Reiter "Konsole" klicken.
 
 ![JavaScript Console](images/originals/console-open.png) 
 
-Neben der *JavaScript-Konsole* gibt es noch viele weitere Werkzeuge wie [*den Stil-Editor*](https://developer.mozilla.org/en-US/docs/Tools/Style_Editor), [*den Netzwerk-Monitor*](https://developer.mozilla.org/en-US/docs/Tools/Network_Monitor), [*den JavaScript-Profiler*](https://developer.mozilla.org/en-US/docs/Tools/Profiler), [*den JavaScript-Debugger*](https://developer.mozilla.org/en-US/docs/Tools/Debugger), [*den Seiten-Inspektor*](https://developer.mozilla.org/de/docs/Tools/Seiten_Inspektor) und viele weitere.
+Neben der *JavaScript-Konsole* gibt es noch viele weitere Werkzeuge wie [*die Stilbearbeitung*](https://developer.mozilla.org/en-US/docs/Tools/Style_Editor), [*die Netzwerkkanalanalyse*](https://developer.mozilla.org/en-US/docs/Tools/Network_Monitor), [*die Laufzeitanalyse*](https://developer.mozilla.org/en-US/docs/Tools/Profiler), [*den JavaScript-Debugger*](https://developer.mozilla.org/en-US/docs/Tools/Debugger), [*den Seiten-Inspektor*](https://developer.mozilla.org/de/docs/Tools/Seiten_Inspektor) und viele weitere.
 
 In der Anwendung aus dem vorigen Kapitel haben wir die Konsole benutzt, um den Fortschritt des Programms zu überprüfen. Dies ist eine ziemlich mächtige Methode, um unsere Apps zu debuggen - aber einige Entwickler benutzen immer noch `alert()` für all ihren JavaScript-Code als "Debug-Werkzeug".
 

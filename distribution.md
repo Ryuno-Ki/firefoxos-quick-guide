@@ -4,7 +4,7 @@ Jetzt wo unsere Anwendung fertig ist, müssen wir herausfinden, wie wir sie an d
 
 Meiner bescheidenen Meinung nach ergibt das Verteilen deiner Anwendung außerhalb des Firefox Marketplaces in zwei Situationen Sinn.
 
- 1. Du entwickelst eine Anwendung für den firmeninternen Gebrauch oder einem anderen eingeschränkten Nutzerkreis. Falls du sie im Marketplace einreichst, wird sie für jeden verfügbar sein und wenn du den Gebrauch der App auf eine Gruppe Personen einschränken willst, musst du irgendeine Form von Authentizierungs-Schema mit einem Server-Backend oder Ähnliches einführen. Beispielsweise bittet die *Evernote*-Anwendung beim ersten Start den Benutzer, sich einzuloggen in ihre Server.
+ 1. Du entwickelst eine Anwendung für den firmeninternen Gebrauch oder einem anderen eingeschränkten Nutzerkreis. Falls du sie im Marketplace einreichst, wird sie für jeden verfügbar sein und wenn du den Gebrauch der App auf eine Gruppe Personen einschränken willst, musst du irgendeine Form von Authentifizierungsschema mit einem Server-Backend oder Ähnliches einführen. Beispielsweise bittet die *Evernote*-Anwendung beim ersten Start den Benutzer, sich auf ihre Server einzuloggen.
 
  2. Du hast bereits eine riesige Nutzer-Basis, die du für die Verteilung deiner App heranziehen kannst. Ein Beispiel davon wäre ein Zeitungsverlag wie die *Financial Times*, die ihre App einfach auf der eigenen Seite anbieten kann und damit die meisten ihrer Nutzer erreicht. Behalte im Hinterkopf, dass du deine Anwendung aber auch gleichzeitig innerhalb wie außerhalb des Marketplaces anbieten kannst, so dass du bei bereits bestehenden Marketing-Kanälen diesen zum Durchbruch verhelfen und gleichzeitig den Marketplace zum Erreichen neuer Nutzer außerhalb deines eigenen Kanals nutzen kannst.
 
@@ -14,7 +14,7 @@ Der Verteilungsprozess für Hosted und Packaged Apps ist vergleichbar, aber benu
 
 <<[Code zur Installation einer Hosted App](code/distribution/hosted_apps_distribution.js)
 
-Im obigen Beispiel beinhaltet die `manifestURL` die Adresse zur Manifest-Datei. Sobald dieser Code ausgeführt wird, fragt das System den Benutzer um Zustimmung zur Installation der gegebenen Anwendung und führt in Abhängigkeit der Wahl entweder den Erfolgs- (success) oder Fehler- (error) Callback aus.
+Im obigen Beispiel beinhaltet die `manifestURL` die Adresse zur Manifest-Datei. Sobald dieser Code ausgeführt wird, fragt das System den Benutzer um Zustimmung zur Installation der gegebenen Anwendung und führt in Abhängigkeit der Wahl entweder den success- oder error-Callback aus.
 
 Um mehr über diese API-Überprüfung zu lernen, lies dir [die MDN-Seite über die Installation von Anwendungen](https://developer.mozilla.org/docs/Apps/JavaScript_API) durch.
 
@@ -24,7 +24,7 @@ Die Installation von Packaged Apps ist vergleichbar, aber anstelle des Aufrufs v
 
 <<[Code zur Installation einer Packaged App](code/distribution/packaged_apps_distribution.js)
 
-W> Warnung: Ich habe den Eindruck, dass die Installation einer Packaged App außerhalb des Marketplace nicht möglich ist für Firefox OS in der Version 1.0.1. Auch wenn die API dokumentiert ist, habe ich es nie versucht. Falls du es probieren solltest, gib mir Rückmeldung, so dass ich dieses Buch entsprechend aktualisieren kann.
+W> Warnung: Ich habe den Eindruck, dass die Installation einer Packaged App außerhalb des Marketplace für Firefox OS in der Version 1.0.1 nicht möglich ist. Auch wenn die API dokumentiert ist, habe ich es nie versucht. Falls du es probieren solltest, gib mir Rückmeldung, so dass ich dieses Buch entsprechend aktualisieren kann.
 
 ## Zusammenfassung 
 

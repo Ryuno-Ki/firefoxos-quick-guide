@@ -22,7 +22,7 @@ In diesem Buch wirst du viele Abschnitte finden, in denen ich meine eigene Meinu
 
 ## Wie dieses Buch entstand
 
-Ursprünglich hatte ich dieses Buch in meiner freien Zeit geschrieben - aber dank der guten Hilfe von meinem Google Summer of Code (GSoC) Mentoren, Marcos Caceres, wurde dieses Buch Teil meines GSoC-Projekts - welches darauf abzielte, eine nützliche Entwickler-Quelle für Firefox OS zu erstellen. Von daher, riesigen Dank an Google, dass sie diese Arbeit finanziert haben und an das Web API-Team von Mozilla dafür, dass sie mich sie den Sommer über besuchen ließen.
+Ursprünglich hatte ich dieses Buch in meiner freien Zeit geschrieben - aber dank der guten Hilfe von meinem Google Summer of Code (GSoC) Mentor, Marcos Caceres, wurde dieses Buch Teil meines GSoC-Projekts - welches darauf abzielte, eine nützliche Entwickler-Quelle für Firefox OS zu erstellen. Von daher, riesigen Dank an Google, dass sie diese Arbeit finanziert haben und an das Web API-Team von Mozilla dafür, dass sie mich sie den Sommer über besuchen ließen.
 
 ## Auf dem aktuellsten Stand bleiben
 
@@ -38,7 +38,7 @@ Unabhängig von den Spenden solltest du deine E-Mail-Adresse auf der Download-Se
 
 ## Wie man den Autor erreichen kann
 
-Um Kommentare und Feedback einzusenden, schreibe mir eine E-Mail an [fxosquickguide@andregarzia.com](mailto:fxosquickguide@andregarzia.com). Meine Website ist [http://andregarzia.com](http://andregarzia.com). Mein Ttitter-Account ist [@soapdog](http://twitter.com/soapdog).
+Um Kommentare und Feedback einzusenden, schreibe mir eine E-Mail an [fxosquickguide@andregarzia.com](mailto:fxosquickguide@andregarzia.com). Meine Website ist [http://andregarzia.com](http://andregarzia.com). Mein Twitter-Account ist [@soapdog](http://twitter.com/soapdog).
 
 Wenn du die Inhalte dieses Buches verbessern möchtest, lies bitte den Abschnitt Feedback & Pull Requests.
 
@@ -50,13 +50,9 @@ Die Cover-Seite wurde von Raphael Eckhardt erstellt, ein Designer und Illustrato
 
 Dieses Buch ist für Leser mit mittleren Kenntnissen in HTML, CSS und JavaScript geschrieben, die mobile Anwendungen für Firefox OS schreiben wollen. HTML, CSS und JavaScript zu lehren, übersteigt den Rahmen dieses Buches. Ich werde dir aber Verweise auf gute Referenz-Bücher geben.
 
-## Who should read this book
-
-This book is written for readers with an intermediate knowledge of HTML, CSS and JavaScript who wants to build mobile applications for Firefox OS. Teaching HTML, CSS and JavaScript is beyond the scope of this book. I will give you links for good reference books though.
-
 ## Best Practices vs. Anfänger-Freundlichkeit
 
-Erfahrene Entwickler werden bemerken, dass ich manchmal nicht alle Good Practices im Beispiel-Quellcode folgen werde. Auch wenn ich Anti-Patterns zu vermeiden versuche, bemühe ich mich, sich sofort aufrufende Funktionen und andere vergleichbare Praktiken auf ein Minimum zu reduzieren. Der Hauptgrund dafür liegt darin, dass dies ein Einführungsbuch ist. Bewährte Programmierer werden merken, wann und wie Dinge umgeändert werden müssen, während Anfänger-Programmierer immer noch in der Lage sein, zu verstehen, was vor sich geht. Sämtlicher Code hier funktioniert und sowie ich das Buch aktualisier, gehe ich noch einmal durch den Code und verwende mehr und mehr Best Practices in Abhängigkeit vom Feedback der Leser.
+Erfahrene Entwickler werden bemerken, dass ich manchmal nicht alle Good Practices im Beispiel-Quellcode folgen werde. Auch wenn ich Anti-Patterns zu vermeiden versuche, bemühe ich mich, sich sofort aufrufende Funktionen und andere vergleichbare Praktiken auf ein Minimum zu reduzieren. Der Hauptgrund dafür liegt darin, dass dies ein Einführungsbuch ist. Bewährte Programmierer werden merken, wann und wie Dinge umgeändert werden müssen, während Anfänger-Programmierer immer noch in der Lage sind, zu verstehen, was vor sich geht. Sämtlicher Code hier funktioniert und sowie ich das Buch aktualisier, gehe ich noch einmal durch den Code und verwende mehr und mehr Best Practices in Abhängigkeit vom Feedback der Leser.
 
 Wenn du noch tiefer in die Welt von hochqualitativem JavaScript-Programmieren eintauchen willst, gibt es hier einige gute Bücher:
 
@@ -67,7 +63,7 @@ Wenn du noch tiefer in die Welt von hochqualitativem JavaScript-Programmieren ei
 
 ## Feedback & Pull Requests
 
-Dies ist ein Freies und Offenes Buch und ich freue mich über jedes Feedback, dass Menschen mir geben können. Sämtlicher Inhalt dieses Buches befindet sich im [GitHub Repository](https://github.com/soapdog/firefoxos-quick-guide) und wurde mit Markdown geschrieben (plus einige Erweiterungen von Leanpub). Um mir Feedback, Bug fixes und Verbesserungen zukommen zu lassen, schicke einfach ein Pull Request. Danke schon einmal im Voraus für alle Beiträge.
+Dies ist ein Freies und Offenes Buch und ich freue mich über jedes Feedback, dass Menschen mir geben können. Sämtlicher Inhalt dieses Buches befindet sich im [GitHub Repository](https://github.com/soapdog/firefoxos-quick-guide) und wurde mit Markdown geschrieben (plus einige Erweiterungen von Leanpub). Um mir Feedback, Bugfixes und Verbesserungen zukommen zu lassen, schicke einfach ein Pull Request. Danke schon einmal im Voraus für alle Beiträge.
 
 Das Git Repository für dieses Buch befindet sich auf [https://github.com/soapdog/firefoxos-quick-guide](https://github.com/soapdog/firefoxos-quick-guide).
 
@@ -84,7 +80,7 @@ Ich begrüße jede Hilfe, dieses Buch in weiteren Sprachen zu übersetzen (und m
 
 ### Version 0.2
 
-Dieses Buch wurde von marcos Caceres aus dem WebAPI-Team von Mozilla überarbeitet. Der Inhalt von jedem Kapitel wurde auf technische Korrektheit überprüft und viele grammatikalische Fehler und Rechtschreibfehler wurden dabei entfernt.
+Dieses Buch wurde von Marcos Caceres aus dem WebAPI-Team von Mozilla überarbeitet. Der Inhalt von jedem Kapitel wurde auf technische Korrektheit überprüft und viele grammatikalische Fehler und Rechtschreibfehler wurden dabei entfernt.
 
 ### Version 0.1
 

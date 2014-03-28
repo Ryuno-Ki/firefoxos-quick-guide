@@ -4,7 +4,7 @@
 
 In diesem Kapitel werden wir eine einfache **Memos**-Anwendung entwickeln, also eine Anwendung zum Aufnehmen von Notizen. Bevor wir mit dem Code schreiben anfangen, lass uns die Arbeitsweise durchgehen.
 
-Die App besitzt drei Ansichten. Die erste ist die Hauptdarstellung und beinhaltet eine Liste aller gespeicherten Notizen anhand ihres Titels. Wenn du auf eine Notiz klickst (oder eine neue erstellst), wirst du zu einer Detailansicht geleitet, die dir eine Bearbeitung des Inhalts und Titels erlaubt. Dies wird in der Abbildung unten dargestellt.
+Die App besitzt drei Ansichten. Die erste ist die Hauptdarstellung und beinhaltet eine Liste aller gespeicherten Notizen anhand ihres Titels. Wenn du auf eine Notiz anklickst (oder eine neue erstellst), wirst du zu einer Detailansicht geleitet, die dir eine Bearbeitung des Inhalts und Titels erlaubt. Dies wird in der Abbildung unten dargestellt.
 
 ![Memos, Bearbeitungssicht](images/originals/memos-editing-screen.png)
 
@@ -22,24 +22,24 @@ Der erste Schritt besteht darin, einen Ordner für die Anwendung zu erstellen; n
 
 Das Manifest von Memos ist ziemlich selbsterklärend. Erstelle eine Datei namens **manifest.webapp** im **memos**-Ordner. Die Manifeste sind [JSON](http://json.org)-Dateien, welche eine Anwendung beschreiben. In dieser Datei werden Dinge festgehalten wie der Name der App, wer der Entwickler ist, welche Icons benutzt werden sollen, welche Datei beim Start aufgerufen werden soll, welche privilegierten APIs du gerne benutzen möchtest und mehr.
 
-Unten sehen wir den Inhalt der Memos Manifest-Datei. Pass auf, wenn du diese Datei kopierst, denn es ist sehr leicht, ein Komma an der falschen Stelle zu platzieren und damit ein invalides JSON zu erhalten. Es gibt viele Werkzeuge, mit denen du JSON-Dateien validieren kannst, aber ein spezielles zum Prüfen von App Manifeste. Du findest dieses Werkzeug unter[http://appmanifest.org/](http://appmanifest.org/). Um mehr über App-Manifeste zu lernen, lies [diese Seite auf MDN über sie](https://developer.mozilla.org/docs/Apps/Manifest).
+Unten sehen wir den Inhalt der Memos Manifest-Datei. Pass auf, wenn du diese Datei kopierst, denn es ist sehr leicht, ein Komma an der falschen Stelle zu platzieren und damit ein invalides JSON zu erhalten. Es gibt viele Werkzeuge, mit denen du JSON-Dateien validieren kannst, aber ein spezielles zum Prüfen von App-Manifesten. Du findest dieses Werkzeug unter [http://appmanifest.org/](http://appmanifest.org/). Um mehr über App-Manifeste zu lernen, lies [diese Seite auf MDN über sie](https://developer.mozilla.org/docs/Apps/Manifest).
 
 <<[Manifest-Datei von Memos(*manifest.webapp*)](code/memos/manifest.webapp)
 
 Lass uns einmal die einzelnen Felder davon durchgehen.
 
-|Feld		|Beschreibun|
-|-----------|-----------------------------------------------------------------------------------|
-|name		|Dies ist der Name der Anwendung.		                                                |
-|version	|Dies ist die aktuelle Version der App. 										    |
-|launch_path|Die beim Start zu benutzende Datei.					                    |
-|permissions|Welche API-Berechtigungen deine App anfordert. Mehr dazu weiter unten.				|
-|developer  |Der Entwickler dieser Anwendung 													|
-|icons		|Die von der App benutzten Icons in verschiedenen Größen.									|
+|Feld		|Beschreibung|
+|---------------|-----------------------------------------------------------------------|
+|name		|Dies ist der Name der Anwendung.                                       |
+|version	|Dies ist die aktuelle Version der App.				        |
+|launch_path    |Die beim Start zu benutzende Datei.		                        |
+|permissions    |Welche API-Berechtigungen deine App anfordert. Mehr dazu weiter unten. |
+|developer      |Der Entwickler dieser Anwendung. 				        |
+|icons		|Die von der App benutzten Icons in verschiedenen Größen.               |
 
 Der interessanteste Teil dieses Manifests ist das Berechtigungsfeld, wo wir um die *storage*-Berechtigung bitten, die uns die Benutzung von IndexedDB ohne Einschränkungen[^storage-permission] erlaubt (dank dieser Berechtigung können wir dann also so viele Notizen speichern, wie wir wollen - auch wenn wir darauf bedacht sein sollten, nicht zu viel Speicher zu belegen!).
 
-[^storage-permission]: Um mehr über Berechtigungen zu erfahren lies [die Seite auf MDN über App-Berechtigunge(https://developer.mozilla.org/en-US/docs/Web/Apps/App_permissions).
+[^storage-permission]: Um mehr über Berechtigungen zu erfahren lies [die Seite auf MDN über App-Berechtigunge](https://developer.mozilla.org/en-US/docs/Web/Apps/App_permissions).
 
 Jetzt wo das Manifest steht, lass uns zum HTML übergehen.
 
@@ -81,11 +81,11 @@ Lass uns mit der **index.html** anfangen, indem wir die benötigten Schnippsel e
 </head>
 ~~~~~~~~
 
-In *Zeile 01* deklarieren wir den DOCTYPE als HTML5. Von *Zeile 05 bis 15* binden wir das CSS für die verschieden Komponenten ein, die wir in unserer App benutzen werden, etwa Kopfzeilen, Listen, Textfelder und mehr.
+In *Zeile 01* deklarieren wir den DOCTYPE als HTML5. Von *Zeile 05 bis 17* binden wir das CSS für die verschieden Komponenten ein, die wir in unserer App benutzen werden, etwa Kopfzeilen, Listen, Textfelder und mehr.
 
 ### Die Hauptansicht erstellen
 
-Jetzt können wir anfangen, die verschiedenen Ansichten zu erstellen. Wie ich bereits früher erwähnte, liegt jede Ansicht unserer App innerhalb einer `<section>`, die sich im `<body>`-Tag befindet. Dieses wiederum muss das Attribut *role* mit dem Wert *application* besitzen, damit die CSS-Selektoren darauf zugreifen können, um das Interface zu konstruieren. Von daher wird unser Body-Tag die Gestalt `<body role="application">`haben. Lass uns also die erste Ansicht erstellen und dabei auch den Body-Tag deklarieren.
+Jetzt können wir anfangen, die verschiedenen Ansichten zu erstellen. Wie ich bereits früher erwähnte, liegt jede Ansicht unserer App innerhalb einer `<section>`, die sich im `<body>`-Tag befindet. Dieses wiederum muss das Attribut *role* mit dem Wert *application* besitzen, damit die CSS-Selektoren darauf zugreifen können, um das Interface zu konstruieren. Von daher wird unser Body-Tag die Gestalt `<body role="application">` haben. Lass uns also die erste Ansicht erstellen und dabei auch den Body-Tag deklarieren.
 
 ~~~~~~~~
 <body role="application">
@@ -158,9 +158,9 @@ Am oberen Ende des Bildschirms, repräsentiert durch das `<header>`-Element, hab
 
 Unterhalb der oberen Werkzeugleiste befindet sich ein Absatz mit einer `<textarea>`, welche den Inhalt der eigentlichen Notiz aufnimmt und eine weitere Werkzeugleiste mit einem Mülleimer-Knopf zum Löschen der gerade dargestellten Notiz.
 
-Diese drei Elemente und ihre Child Nodes bilden die Bearbeitungsansicht. Darunter haben wir eine `<form>`, die als Dialog-Kasten benutzt wird und den Bestätigungsdialog beinhaltet, der einem Benutzer gezeigt, wenn er eine Notiz löschen will. Dieser Dialog ist sehr schlicht gehalten, denn er beinhaltet nur den Text mit der Bestätigungsfrage und zwei Knöpfe; einer zum Löschen der Notiz, der andere zum Abbrechen.
+Diese drei und ihre Kinder-Elemente bilden die Bearbeitungsansicht. Darunter haben wir eine `<form>`, die als Dialog-Kasten benutzt wird und den Bestätigungsdialog beinhaltet, der einem Benutzer gezeigt, wenn er eine Notiz löschen will. Dieser Dialog ist sehr schlicht gehalten, denn er beinhaltet nur den Text mit der Bestätigungsfrage und zwei Knöpfe: einer zum Löschen der Notiz, der andere zum Abbrechen.
 
-Jetzt, wo wir zum Schließen dieser `<section>' kommen, haben wir alle Bildschirme implementiert und der verbleibende HTML-Code dient ausschließlich dem Einbinden der JavaScript-Dateien und des Abschließens der HTML-Datei.
+Jetzt, wo wir zum Schließen dieser `<section>` kommen, haben wir alle Bildschirme implementiert und der verbleibende HTML-Code dient ausschließlich dem Einbinden der JavaScript-Dateien und des Abschließens der HTML-Datei.
 
 ~~~~~~~~
 <script src="/js/model.js"></script>
@@ -173,7 +173,7 @@ Jetzt, wo wir zum Schließen dieser `<section>' kommen, haben wir alle Bildschir
 
 Jetzt bringen wir Leben in unsere App, indem wir JavaScript hinzufügen. Um den Code besser zu organisieren, habe ich den JavaScript-Code in zwei Dateien aufgeteilt:
 
-* **model.js:** enthält die Routinen, um mit dem Speicher umzugehen und die Noten zu empfangen, aber beinhaltet keine App-Logik oder irgendetwas, was mit der Oberfläche oder den Datei-Einträgen zu tun hätte. Theoretisch könnten wir diese Datei in anderen Apps wiederverwerten, die auch Textnotizen benötigen.
+* **model.js:** enthält die Routinen, um mit dem Speicher umzugehen und die Notizen abzurufen, aber beinhaltet keine App-Logik oder irgendetwas, was mit der Oberfläche oder den Datei-Einträgen zu tun hätte. Theoretisch könnten wir diese Datei in anderen Apps wiederverwerten, die auch Textnotizen benötigen.
 * **app.js:** Bindet die Event-Handler an ihre HTML-Elemente und beinhaltet die App-Logik.
 
 Beide Dateien sollten innerhalb eines **js**-Ordners gespeichert werden, der auf gleicher Höhe wie die **style**- und **shared**-Ordner liegt.
@@ -184,7 +184,7 @@ Wir werden [IndexedDB](https://developer.mozilla.org/de/docs/IndexedDB/IndexedDB
 
 Der Code-Abschnitt unten aus *model.js* ist dafür verantwortlich, die Verbindung aufzubauen und den Speicher anzulegen.
 
-A> Wichtig: Dieser Code wurde so geschrieben, dass er leicht verständlich ist. Von daher spiegelt er nicht die Best Practices in JavaScript-Programmierung wider. Es werden einige globale Variablen benutzt (für die ich eines Tages in der Hölle landen werde), sowie einige weitere Leckerbissen. Die Fehlerbehandlung ist gewissermaßen nicht vorhanden. Das Hauptanliegen dieses Buches liegt darin, den *Workflow* der App-Entwicklung für Firefox OS beizugringen und nicht die besten JavaScript-Entwurfsmuster zu vermitteln. Nachdem wir das also geklärt hätten, werde ich den Quellcode gemäß den Best Practices überarbeiten, wenn genügend Leute denken, dass es nicht Anfänger abschrecken wird.
+A> Wichtig: Dieser Code wurde so geschrieben, dass er leicht verständlich ist. Von daher spiegelt er nicht die Best Practices in JavaScript-Programmierung wider. Es werden einige globale Variablen benutzt (für die ich eines Tages in der Hölle landen werde), sowie einige weitere Leckerbissen. Die Fehlerbehandlung ist gewissermaßen nicht vorhanden. Das Hauptanliegen dieses Buches liegt darin, den *Workflow* der App-Entwicklung für Firefox OS beizubringen und nicht die besten JavaScript-Entwurfsmuster zu vermitteln. Nachdem wir das also geklärt hätten, werde ich den Quellcode gemäß den Best Practices überarbeiten, wenn genügend Leute denken, dass es Anfänger nicht abschrecken wird.
 
 ~~~~~~~
 var dbName = "memos";
@@ -232,7 +232,7 @@ request.onupgradeneeded = function (event) {
 }
 ~~~~~~~
 
-A> Wichtig: Vergib mir noch einmal für die globalen Variablen, dies ist nur ein Lehrmaterial. Ein weiteres Detail besteht darin, dass ich die Kommentare aus dem Quellcode entfernt habe, um den Speicherplatz für dieses Buch zu sparen. Wenn du dir den Quellcode von GitHub herunterlädst, erhälst du alle Kommentare mit.
+A> Wichtig: Vergib mir noch einmal für die globalen Variablen, dies ist nur Lehrmaterial. Ein weiteres Detail besteht darin, dass ich die Kommentare aus dem Quellcode entfernt habe, um den Speicherplatz für dieses Buch zu sparen. Wenn du dir den Quellcode von GitHub herunterlädst, erhälst du alle Kommentare mit.
 
 Der Code oben erstellt ein *db*-Objekt und ein *request*-Objekt. Das erste wird von anderen Funktionen im Quellcode benutzt, um den Notizen-Speicher zu manipulieren.
 
@@ -449,7 +449,7 @@ function refreshMemoList() {
 }
 ~~~~~~~~
 
-Die `refreshMemoList()`-Funktion verändert den DOM, indem es die Element für Element die Liste der Notizen auf dem Bildschirm erstellt. Es wäre wesentlich einfacher, hier einige Vorlagen-Helfer wie [handlebars](http://handlebarsjs.com/) oder [underscore](http://underscorejs.org/) zu benutzen, aber da diese App nur aus *vanilla JavaScript* besteht, werden wir alles von Hand schreiben. Die Funktion heißt `showMemoList()`, wie oben bereits gezeigt.
+Die `refreshMemoList()`-Funktion verändert den DOM, indem es Element für Element die Liste der Notizen auf dem Bildschirm erstellt. Es wäre wesentlich einfacher, hier einige Vorlagen-Helfer wie [handlebars](http://handlebarsjs.com/) oder [underscore](http://underscorejs.org/) zu benutzen, aber da diese App nur aus *vanilla JavaScript* besteht, werden wir alles von Hand schreiben. Die Funktion heißt `showMemoList()`, wie oben bereits gezeigt.
 
 Dies sind alle Funktionen, die unsere App benutzt. Das einzige, was noch fehlt, ist die Initialisierung der Event-Handler und der erste Aufruf von `refreshMemoList()`.
 
@@ -508,7 +508,7 @@ Wenn alles wie geplant abläuft, wirst du deine Memos App in der Liste der Apps 
 
 Sobald du eine neue Anwendung hinzufügst, wird der Simulator diese starten - mit der Möglichkeit zum Testen. Jetzt kannst du alle Funktionen von Memos ausprobieren.
 
-Glückwunsch! Du hast deine erste App geschrieben und getestet. Es ist keine komplizierte oder revolution#re App - aber ich hoffe, es half dir den Entwicklungs-Prozess von Firefox OS zu verstehen. Wie du sehen kannst, ist es nicht so verschieden von der Standard-Webentwicklung.
+Glückwunsch! Du hast deine erste App geschrieben und getestet. Es ist keine komplizierte oder revolutionäre App - aber ich hoffe, es half dir den Entwicklungs-Prozess von Firefox OS zu verstehen. Wie du sehen kannst, ist es nicht so verschieden von der Standard-Webentwicklung.
 
 Bedenke, dass du jedes Mal auf den **Refresh**-Knopf drücken musst, wenn du etwas am Quellcode änderst, um die Kopie der App im Simulator zu aktualisieren.
 
